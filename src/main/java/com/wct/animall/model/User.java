@@ -107,4 +107,12 @@ public class User {
 		return roles;
 	}
 
+	public List<Announcement> getAnnoucements() {
+		return annoucements;
+	}
+
+	public void setAnnoucements(List<Announcement> annoucements) {
+		this.annoucements = annoucements;
+	}
+
 }
