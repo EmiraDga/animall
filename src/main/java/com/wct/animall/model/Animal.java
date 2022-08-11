@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Table(name = "Animal")
@@ -14,6 +16,10 @@ public class Animal {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@OneToOne
+	@JoinColumn(name = "announcement_id")
+	private Announcement announce;
+
 	private String color, gender, image, Breed, name;
 
 	private int age;
@@ -22,12 +28,14 @@ public class Animal {
 
 	private boolean vaccinated, trained;
 
+	Category category;
+
 	public Animal() {
 
 	}
 
 	public Animal(String color, String gender, String image, String breed, String name, int age, float weight,
-			float length, float width, boolean vaccinated, boolean trained) {
+			float length, float width, boolean vaccinated, boolean trained, Category category) {
 		this.color = color;
 		this.gender = gender;
 		this.image = image;
@@ -39,6 +47,7 @@ public class Animal {
 		this.width = width;
 		this.vaccinated = vaccinated;
 		this.trained = trained;
+		this.category = category;
 	}
 
 	public Integer getId() {
@@ -135,5 +144,13 @@ public class Animal {
 
 	public void setTrained(boolean trained) {
 		this.trained = trained;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 }

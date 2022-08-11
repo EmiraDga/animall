@@ -1,6 +1,7 @@
 package com.wct.animall.model;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.DiscriminatorColumn;
@@ -14,6 +15,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -46,6 +48,9 @@ public class User {
 	@NotBlank
 	@Size(max = 20)
 	private String username;
+
+	@OneToMany(mappedBy = "user")
+	private List<Announcement> annoucements;
 
 	public Long getId() {
 		return id;
