@@ -28,7 +28,7 @@ public class Animal {
 
 	private boolean vaccinated, trained;
 
-	Category category;
+	private Category category;
 
 	public Animal() {
 

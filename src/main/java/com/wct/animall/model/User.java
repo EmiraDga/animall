@@ -21,25 +21,42 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "user_type", length = 5)
 public class User {
-	@Getter
-	@Setter
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	@NotBlank
 	@Size(max = 20)
 	@Email
 	private String email;
+
+	private String lastname;
+
+	private String firstname;
+
+	private String mobile;
+
+	private String phone;
+	@JsonIgnore
+	private boolean active;
+
+	private boolean isAccountNonExpired;
+
+	private boolean isAccountNonLocked;
+
+	private boolean isEnabled;
+
+	@NotBlank
+	@Size(max = 20)
+	private Authority authority;
 
 	@NotBlank
 	@Size(max = 120)
@@ -87,10 +104,20 @@ public class User {
 	public User() {
 	}
 
-	public User(String username, String email, String password) {
+	public User(String username, String email, String password, Authority authority, String mobile, String phone,
+			String lastname, String firstname, boolean isAccountNonExpired, boolean isAccountNonLocked, boolean active,
+			boolean isEnabled) {
 		this.username = username;
 		this.email = email;
 		this.password = password;
+		this.authority = authority;
+		this.mobile = mobile;
+		this.phone = phone;
+		this.isAccountNonExpired = isAccountNonExpired;
+		this.isEnabled = isEnabled;
+		this.active = active;
+		this.firstname = firstname;
+		this.lastname = lastname;
 	}
 
 	// Relation
@@ -113,6 +140,78 @@ public class User {
 
 	public void setAnnoucements(List<Announcement> annoucements) {
 		this.annoucements = annoucements;
+	}
+
+	public Authority getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(Authority authority) {
+		this.authority = authority;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public boolean isAccountNonExpired() {
+		return isAccountNonExpired;
+	}
+
+	public void setAccountNonExpired(boolean isAccountNonExpired) {
+		this.isAccountNonExpired = isAccountNonExpired;
+	}
+
+	public boolean isAccountNonLocked() {
+		return isAccountNonLocked;
+	}
+
+	public void setAccountNonLocked(boolean isAccountNonLocked) {
+		this.isAccountNonLocked = isAccountNonLocked;
+	}
+
+	public boolean isEnabled() {
+		return isEnabled;
+	}
+
+	public void setEnabled(boolean isEnabled) {
+		this.isEnabled = isEnabled;
 	}
 
 }

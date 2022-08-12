@@ -19,7 +19,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		return userRepository.findByUsername(username).map(user -> modelMapper.map(user, UserDetails.class))
+		return userRepository.findByUsername(username).map(user -> modelMapper.map(user, MyUserDetails.class))
 				.orElseThrow(() -> new UsernameNotFoundException("User not found with username " + username));
 	}
 

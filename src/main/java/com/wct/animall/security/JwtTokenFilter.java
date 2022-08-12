@@ -16,7 +16,6 @@ import com.wct.animall.exception.ResourceNotFoundException;
 import com.wct.animall.security.jwt.JwtTokenProviderService;
 
 @Component
-
 public class JwtTokenFilter extends OncePerRequestFilter {
 
 	@Autowired
