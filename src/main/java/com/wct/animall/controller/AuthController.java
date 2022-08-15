@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wct.animall.repository.RoleRepository;
 import com.wct.animall.repository.UserRepository;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -18,8 +17,6 @@ public class AuthController {
 	AuthenticationManager authenticationManager;
 	@Autowired
 	UserRepository userRepository;
-	@Autowired
-	RoleRepository roleRepository;
 	@Autowired
 	PasswordEncoder encoder;
 
@@ -65,10 +62,8 @@ public class AuthController {
 //		userRepository.save(user);
 //		return ResponseEntity.ok(MessageResponse("User registered successfully!"));
 //	}
-
-	private Object MessageResponse(String string) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	/*
+	 * private Object MessageResponse(String string) { // TODO Auto-generated method
+	 * stub return null; }
+	 */
 }
