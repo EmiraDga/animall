@@ -24,6 +24,7 @@ public class UserController {
 	@Autowired
 	private UserRepository userRepository;
 
+	// GET
 	// get all users
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public List<User> getUsers() {
@@ -38,19 +39,20 @@ public class UserController {
 
 	// POST
 	@RequestMapping(value = "/users/save", method = RequestMethod.POST)
-	public void saveUser(User user) {
+	public void saveUser(@RequestBody User user) {
 		userService.saveUser(user);
 	}
 
 	// PUT
 	@RequestMapping(value = "/users/update", method = RequestMethod.PUT)
-	public void updateUser(User user) {
+	public void updateUser(@RequestBody User user) {
 		userService.updateUser(user);
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/user")
-	public void addUser(@RequestBody User user) {
-		userService.addUser(user);
+	// DELETE
+	@RequestMapping(value = "/users/delete", method = RequestMethod.DELETE)
+	public void deleteUser(Long id) {
+		userService.deleteUser(id);
 	}
 
 	/*
@@ -58,5 +60,9 @@ public class UserController {
 	 * 
 	 * @RequestMapping("/user/{id}") public User getUser(@PathVariable Long id) {
 	 * return userService.getUser(id); }
+	 *
+	 *
+	 * @RequestMapping(method = RequestMethod.POST, value = "/user") public void
+	 * addUser(@RequestBody User user) { userService.addUser(user); }
 	 */
 }

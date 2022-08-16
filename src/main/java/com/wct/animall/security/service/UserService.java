@@ -2,11 +2,14 @@ package com.wct.animall.security.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wct.animall.model.Authority;
 import com.wct.animall.model.User;
+import com.wct.animall.repository.UserRepository;
 
 @Service
 public class UserService {
@@ -66,4 +69,50 @@ public class UserService {
 	public void deleteUser(Long id) {
 		users.remove(id);
 	}
+
+	/*******
+	 * Using JpaRepository methods
+	 **************************/
+
+	@Autowired
+	private UserRepository userRepo;
+
+// Return all users
+	public List<User> getAllTheUsers() {
+		userRepo.findAll().forEach(users::add);
+		return users;
+	}
+
+// Return Single User
+	public User getOnlySingleUser(Long id) {
+		Optional<User> optionalUser = userRepo.findById(id);
+		if (optionalUser.isPresent()) {
+			return optionalUser.get();
+		}
+		return null;
+
+	}
+
+// Save the user with its new changes
+	public void saveTheUser(User user) {
+		userRepo.save(user);
+	}
+
+	// ???? error
+// update the user's Username (lastN + FirstN)
+	public void updateTheUser(User u) {
+		/*
+		 * User user1 = userRepo.findById(u.getId()); // crush the variables of the
+		 * object found user1.setFirstname("john"); user1.setLastname("dew");
+		 * user1.setAge(16); user1.save(userFromDb);
+		 */
+		userRepo.save(u);
+
+	}
+
+//Remove
+	public void RemoveUser(Long id) {
+		userRepo.deleteById(id);
+	}
+
 }
