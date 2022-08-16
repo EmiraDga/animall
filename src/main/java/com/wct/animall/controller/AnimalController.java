@@ -22,7 +22,6 @@ public class AnimalController {
 	private AnimalService animalService;
 
 	/***** GET *****/
-
 	// get all animals
 	@RequestMapping(value = "/animals", method = RequestMethod.GET)
 	public List<Animal> getAnimals() {
@@ -48,7 +47,6 @@ public class AnimalController {
 	}
 
 	/**** DELETE ****/
-
 	@RequestMapping(value = "/users/delete", method = RequestMethod.DELETE)
 	public void deleteUser(int id) {
 		animalService.deleteAnimal(id);
