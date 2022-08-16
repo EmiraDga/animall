@@ -109,9 +109,9 @@ public class UserService {
 		userRepo.save(u);
 
 	}
-
+	
 //Remove
-	public void RemoveUser(Long id) {
+public void RemoveUser(Long id) {
 		userRepo.deleteById(id);
 	}
 

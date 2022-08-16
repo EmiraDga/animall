@@ -54,15 +54,4 @@ public class UserController {
 	public void deleteUser(Long id) {
 		userService.deleteUser(id);
 	}
-
-	/*
-	 * // GET
-	 * 
-	 * @RequestMapping("/user/{id}") public User getUser(@PathVariable Long id) {
-	 * return userService.getUser(id); }
-	 *
-	 *
-	 * @RequestMapping(method = RequestMethod.POST, value = "/user") public void
-	 * addUser(@RequestBody User user) { userService.addUser(user); }
-	 */
 }

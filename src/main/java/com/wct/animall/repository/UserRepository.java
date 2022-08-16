@@ -12,6 +12,8 @@ import com.wct.animall.model.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 	Optional<User> findByUsername(String username);
 
+	// List<User> userFromDb = new ArrayList<>();
+
 	/*
 	 * Boolean existsByUsername(String username);
 	 * 
