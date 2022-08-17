@@ -13,7 +13,7 @@ public class CategoryService {
 	private List<Category> categories = new ArrayList<>();
 
 	// POST
-	public void addAnimal(Category category) {
+	public void addCategory(Category category) {
 		categories.add(category);
 	}
 
@@ -23,7 +23,7 @@ public class CategoryService {
 
 	}
 
-	// Return all Animals
+	// Return all categories
 	public List<Category> getAllCategories() {
 		return categories;
 	}

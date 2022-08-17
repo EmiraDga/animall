@@ -30,6 +30,14 @@ public class Announcement {
 	public Announcement() {
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public Announcement(String state, Date createdDate) {
 		this.state = state;
 		this.createdDate = createdDate;

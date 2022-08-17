@@ -16,7 +16,7 @@ import com.wct.animall.security.service.UserService;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/v1/")
-public class UserController {
+public class UserControllerAPI {
 	@Autowired
 	private UserService userService;
 

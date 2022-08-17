@@ -16,7 +16,7 @@ import com.wct.animall.security.service.AnimalService;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/v1/")
-public class AnimalController {
+public class AnimalControllerAPI {
 
 	@Autowired
 	private AnimalService animalService;
@@ -29,6 +29,7 @@ public class AnimalController {
 	}
 
 	// get an animal by id
+	@RequestMapping(value = "/animals/{id}", method = RequestMethod.POST)
 	public Animal getSingleAnimal(@PathVariable int id) {
 		return animalService.getOnlySingleAnimal(id);
 	}

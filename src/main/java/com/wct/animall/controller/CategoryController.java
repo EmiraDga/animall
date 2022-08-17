@@ -26,7 +26,7 @@ public class CategoryController {
 		return categoryRepository.findAll();
 	}
 
-	@GetMapping("/categories/{id}")
+	@GetMapping("/Category/{id}")
 	public Category getSingleCategory(@PathVariable Long id) {
 		Optional<Category> optionalCategory = categoryRepository.findById(id);
 		if (optionalCategory.isPresent()) {
@@ -37,7 +37,7 @@ public class CategoryController {
 	}
 
 	// Save the category with its new changes
-	@RequestMapping(value = "/categories/update")
+	@RequestMapping(value = "/Category/update")
 	public void saveTheUser(@RequestBody Category category) {
 		categoryRepository.save(category);
 	}
