@@ -21,7 +21,7 @@ public class AnimalService {
 
 	// GET
 	public Animal getAnimal(Long id) {
-		return animals.stream().filter(u -> u.getId().equals(id)).findFirst().get();
+		return animals.stream().filter(a -> a.getId().equals(id)).findFirst().get();
 
 	}
 	/*

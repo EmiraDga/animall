@@ -10,29 +10,50 @@ import com.wct.animall.model.Category;
 @Service
 public class CategoryService {
 
-	private List<Category> category = new ArrayList<>();
-	/*
-	 * @Autowired private CategoryRepository CategoryRepo;
-	 * 
-	 * // Return all Categories public List<Category> getAllCategories() {
-	 * CategoryRepo.findAll().forEach(category::add); return category; }
-	 * 
-	 * // Return Single Category public Category getOnlySingleCategory(Long id) {
-	 * Optional<Category> optionalCategory = CategoryRepo.findById(id); if
-	 * (optionalCategory.isPresent()) { return optionalCategory.get(); } return
-	 * null;
-	 * 
-	 * }
-	 * 
-	 * // Save the category with its new changes public void saveTheUser(Category
-	 * category) { CategoryRepo.save(category); }
-	 * 
-	 * // update the category public void updateTheUser(Category c) {
-	 * 
-	 * CategoryRepo.save(c);
-	 * 
-	 * }
-	 * 
-	 * //Remove public void RemoveCategory(Long id) { CategoryRepo.deleteById(id); }
-	 */
+	private List<Category> categories = new ArrayList<>();
+
+	// POST
+	public void addAnimal(Category category) {
+		categories.add(category);
+	}
+
+	// GET
+	public Category getCategory(Long id) {
+		return categories.stream().filter(c -> c.getId().equals(id)).findFirst().get();
+
+	}
+
+	// Return all Animals
+	public List<Category> getAllCategories() {
+		return categories;
+	}
+
+	// Return Single Category
+	public Category getSignleCategory(int id) {
+		for (Category c : categories) {
+			if (c.getId() == id)
+				return c;
+		}
+		return null;
+	}
+
+	// Save the Category with its new changes
+	public void saveCategory(Category category) {
+		this.categories.add(category);
+	}
+
+	// update the category
+	public void updateCategory(Category category) {
+		for (Category c : categories) {
+			if (c.getId() == category.getId()) {
+				c.setName(category.getName());
+			}
+		}
+
+	}
+
+	// Remove an Category
+	public void deleteCategory(int id) {
+		categories.remove(id);
+	}
 }

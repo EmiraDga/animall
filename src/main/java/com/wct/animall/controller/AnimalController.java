@@ -47,8 +47,8 @@ public class AnimalController {
 	}
 
 	/**** DELETE ****/
-	@RequestMapping(value = "/users/delete", method = RequestMethod.DELETE)
-	public void deleteUser(int id) {
+	@RequestMapping(value = "/animals/delete", method = RequestMethod.DELETE)
+	public void deleteAnimal(int id) {
 		animalService.deleteAnimal(id);
 	}
 
