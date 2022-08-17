@@ -16,7 +16,6 @@ import com.wct.animall.repository.AnnouncementRepository;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @Controller
-@RequestMapping("/api/v1/")
 public class AnnouncementController {
 
 	@Autowired

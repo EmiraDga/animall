@@ -16,7 +16,6 @@ import com.wct.animall.repository.CategoryRepository;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @Controller
-@RequestMapping("/api/v1/")
 public class CategoryController {
 	@Autowired
 	CategoryRepository categoryRepository;
