@@ -52,6 +52,23 @@ public class Animal {
 		this.vaccinated = vaccinated;
 		this.trained = trained;
 		this.category = category;
+
+	}
+
+	public Animal(String color, String gender, String image, String breed, String name, int age, float weight,
+			float length, float width, boolean vaccinated, boolean trained) {
+		super();
+		this.color = color;
+		this.gender = gender;
+		this.image = image;
+		Breed = breed;
+		this.name = name;
+		this.age = age;
+		this.weight = weight;
+		this.length = length;
+		this.width = width;
+		this.vaccinated = vaccinated;
+		this.trained = trained;
 	}
 
 	public Integer getId() {
@@ -157,4 +174,13 @@ public class Animal {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+
+	public Announcement getAnnounce() {
+		return announce;
+	}
+
+	public void setAnnounce(Announcement announce) {
+		this.announce = announce;
+	}
+
 }

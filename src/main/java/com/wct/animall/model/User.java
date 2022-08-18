@@ -16,6 +16,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "users")
+/*
+ * @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+ * 
+ * @DiscriminatorColumn(name="user_type", discriminatorType =
+ * DiscriminatorType.STRING)
+ */
 public class User {
 
 	@Id
@@ -43,9 +49,11 @@ public class User {
 
 	private boolean isEnabled;
 
-	@NotBlank
-	@Size(max = 20)
-	private Authority authority;
+	/*
+	 * @NotBlank
+	 * 
+	 * @Size(max = 20) private Authority authority;
+	 */
 
 	@NotBlank
 	@Size(max = 120)
@@ -93,13 +101,12 @@ public class User {
 	public User() {
 	}
 
-	public User(String username, String email, String password, Authority authority, String mobile, String phone,
-			String lastname, String firstname, boolean isAccountNonExpired, boolean isAccountNonLocked, boolean active,
+	public User(String username, String email, String password, String mobile, String phone, String lastname,
+			String firstname, boolean isAccountNonExpired, boolean isAccountNonLocked, boolean active,
 			boolean isEnabled) {
 		this.username = username;
 		this.email = email;
 		this.password = password;
-		this.authority = authority;
 		this.mobile = mobile;
 		this.phone = phone;
 		this.isAccountNonExpired = isAccountNonExpired;
@@ -117,13 +124,11 @@ public class User {
 		this.annoucements = annoucements;
 	}
 
-	public Authority getAuthority() {
-		return authority;
-	}
-
-	public void setAuthority(Authority authority) {
-		this.authority = authority;
-	}
+	/*
+	 * public Authority getAuthority() { return authority; }
+	 * 
+	 * public void setAuthority(Authority authority) { this.authority = authority; }
+	 */
 
 	public String getLastname() {
 		return lastname;

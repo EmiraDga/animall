@@ -7,7 +7,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wct.animall.model.Authority;
 import com.wct.animall.model.User;
 import com.wct.animall.repository.UserRepository;
 
@@ -16,10 +15,9 @@ public class UserService {
 
 	private List<User> users = new ArrayList<>();
 
-	// POST
-	public void addUser(User user) {
-		users.add(user);
-	}
+	/*
+	 * // POST public void addUser(User user) { users.add(user); }
+	 */
 
 	// GET
 	public User getUser(Long id) {
@@ -27,10 +25,13 @@ public class UserService {
 
 	}
 
-	public UserService() {
-		users.add(new User("Samosd", "samosd@gmil.com", "1918495", Authority.ROLE_USER, "258889336", "55714825", "gogo",
-				"brain", true, true, false, true));
-	}
+	/********* ????? *****/
+	/// POST
+	/*
+	 * public void AddUser() { users.add(new User("Samosd", "samosd@gmil.com",
+	 * "1918495", "258889336", "55714825", "gogo", "brain", true, true, false,
+	 * true)); }
+	 */
 
 	// Return all users
 	public List<User> getAllUsers() {
@@ -109,9 +110,9 @@ public class UserService {
 		userRepo.save(u);
 
 	}
-	
+
 //Remove
-public void RemoveUser(Long id) {
+	public void RemoveUser(Long id) {
 		userRepo.deleteById(id);
 	}
 
