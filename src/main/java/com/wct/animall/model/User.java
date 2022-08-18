@@ -16,12 +16,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "users")
-/*
- * @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
- * 
- * @DiscriminatorColumn(name="user_type", discriminatorType =
- * DiscriminatorType.STRING)
- */
 public class User {
 
 	@Id

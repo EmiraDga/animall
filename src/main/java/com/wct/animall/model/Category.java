@@ -26,6 +26,12 @@ public class Category {
 	@OneToMany(mappedBy = "category")
 	private List<Animal> animals;
 
+	public Category(@NotBlank @Size(max = 20) String name, Animal animals) {
+		super();
+		this.name = name;
+		this.animals = this.animals;
+	}
+
 	public Category() {
 	}
 
