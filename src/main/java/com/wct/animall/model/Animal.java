@@ -1,5 +1,7 @@
 package com.wct.animall.model;
 
+import java.io.File;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,8 +24,8 @@ public class Animal {
 	@JoinColumn(name = "announcement_id")
 	private Announcement announce;
 
-	private String color, gender, image, Breed, name;
-
+	private String color, gender, Breed, name;
+	private File image;
 	private int age;
 
 	private float weight, length, width;
@@ -34,11 +36,13 @@ public class Animal {
 	@JoinColumn(name = "Category_id", referencedColumnName = "id")
 	private Category category;
 
+	// Optional<Category> categories = CategoryRepository.findB;
+
 	public Animal() {
 
 	}
 
-	public Animal(String color, String gender, String image, String breed, String name, int age, float weight,
+	public Animal(String color, String gender, File image, String breed, String name, int age, float weight,
 			float length, float width, boolean vaccinated, boolean trained, Category category) {
 		this.color = color;
 		this.gender = gender;
@@ -55,13 +59,12 @@ public class Animal {
 
 	}
 
-	public Animal(String color, String gender, String image, String breed, String name, int age, float weight,
+	public Animal(String color, String gender, File image, String breed, String name, int age, float weight,
 			float length, float width, boolean vaccinated, boolean trained) {
-		super();
 		this.color = color;
 		this.gender = gender;
 		this.image = image;
-		Breed = breed;
+		this.Breed = breed;
 		this.name = name;
 		this.age = age;
 		this.weight = weight;
@@ -69,6 +72,7 @@ public class Animal {
 		this.width = width;
 		this.vaccinated = vaccinated;
 		this.trained = trained;
+
 	}
 
 	public Integer getId() {
@@ -95,11 +99,11 @@ public class Animal {
 		this.gender = gender;
 	}
 
-	public String getImage() {
+	public File getImage() {
 		return image;
 	}
 
-	public void setImage(String image) {
+	public void setImage(File image) {
 		this.image = image;
 	}
 

@@ -43,11 +43,9 @@ public class User {
 
 	private boolean isEnabled;
 
-	/*
-	 * @NotBlank
-	 * 
-	 * @Size(max = 20) private Authority authority;
-	 */
+	@NotBlank
+	@Size(max = 20)
+	private Authority authority;
 
 	@NotBlank
 	@Size(max = 120)
@@ -97,7 +95,7 @@ public class User {
 
 	public User(String username, String email, String password, String mobile, String phone, String lastname,
 			String firstname, boolean isAccountNonExpired, boolean isAccountNonLocked, boolean active,
-			boolean isEnabled) {
+			boolean isEnabled, Authority authority) {
 		this.username = username;
 		this.email = email;
 		this.password = password;
@@ -108,6 +106,7 @@ public class User {
 		this.active = active;
 		this.firstname = firstname;
 		this.lastname = lastname;
+		this.authority = authority;
 	}
 
 	public List<Announcement> getAnnoucements() {
@@ -118,11 +117,13 @@ public class User {
 		this.annoucements = annoucements;
 	}
 
-	/*
-	 * public Authority getAuthority() { return authority; }
-	 * 
-	 * public void setAuthority(Authority authority) { this.authority = authority; }
-	 */
+	public Authority getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(Authority authority) {
+		this.authority = authority;
+	}
 
 	public String getLastname() {
 		return lastname;
