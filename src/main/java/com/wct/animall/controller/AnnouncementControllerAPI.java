@@ -1,10 +1,13 @@
 package com.wct.animall.controller;
 
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +24,18 @@ public class AnnouncementControllerAPI {
 	@Autowired
 	private AnnouncementService announcementService;
 
+	ConcurrentMap<Long, Announcement> annoucements = new ConcurrentHashMap<>();
+
+	/********************* ADD An Announcement ****************/
+	// POST
+	@PostMapping(value = "/Announcement/add")
+	public Announcement addAnnouncement(@RequestBody Announcement announcement) {
+		annoucements.put(announcement.getId(), announcement);
+		return announcement;
+	}
+
+	/****************** ADD An Announcement ********/
+
 	/***** GET *****/
 	// get all announcements
 	@RequestMapping(value = "/Announcements", method = RequestMethod.GET)
@@ -29,7 +44,7 @@ public class AnnouncementControllerAPI {
 	}
 
 	// get an animal by id
-	@RequestMapping(value = "/Announcement/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "/Announcement/{id}", method = RequestMethod.GET)
 	public Announcement getSingleAnnouncement(@PathVariable int id) {
 		return announcementService.getSignleAnnouncement(id);
 	}

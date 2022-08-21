@@ -1,10 +1,13 @@
 package com.wct.animall.controller;
 
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +24,18 @@ public class AnimalControllerAPI {
 	@Autowired
 	private AnimalService animalService;
 
+	ConcurrentMap<Integer, Animal> animals = new ConcurrentHashMap<>();
+
+	/********************* ADD AN ANIMAL ****************/
+	// POST
+	@PostMapping(value = "/animals/add")
+	public Animal addAnimal(@RequestBody Animal animal) {
+		animals.put(animal.getId(), animal);
+		return animal;
+	}
+
+	/****************** ADD AN ANIMAL ********/
+
 	/***** GET *****/
 	// get all animals
 	@RequestMapping(value = "/animals", method = RequestMethod.GET)
@@ -29,7 +44,7 @@ public class AnimalControllerAPI {
 	}
 
 	// get an animal by id
-	@RequestMapping(value = "/animals/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "/animals/{id}", method = RequestMethod.GET)
 	public Animal getSingleAnimal(@PathVariable int id) {
 		return animalService.getOnlySingleAnimal(id);
 	}

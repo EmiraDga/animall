@@ -38,11 +38,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(final HttpSecurity http) throws Exception {
-		// Added
-		var cors = new CorsConfiguration();
-		cors.setAllowedOrigins(List.of("http://localhost:4200", "http://127.0.0.1:80", "http://example.com"));
-		cors.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-		cors.setAllowedHeaders(List.of("*"));
 
 		http.csrf().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http.cors().and().antMatcher("/**").authorizeRequests() //
@@ -50,6 +45,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.mvcMatchers("/actuator/**").permitAll() //
 				.mvcMatchers("/logout").permitAll() //
 				.mvcMatchers("/swagger-ui/**").permitAll() //
+				.mvcMatchers("/api/v1/users/add/**").permitAll() //
 				.mvcMatchers("/swagger-ui.html").permitAll() //
 				.mvcMatchers("/v3/api-docs/**").permitAll().anyRequest().authenticated();
 
@@ -73,7 +69,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration();
 		configuration.setAllowedHeaders(List.of("*"));
-		configuration.setAllowedOrigins(List.of(appUri));
+		configuration.setAllowedOrigins(List.of("*"));
 		configuration.setAllowedMethods(Arrays.asList("OPTIONS", "GET", "POST", "PUT", "DELETE"));
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", configuration);

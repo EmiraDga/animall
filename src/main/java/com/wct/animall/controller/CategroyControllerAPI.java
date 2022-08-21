@@ -1,10 +1,13 @@
 package com.wct.animall.controller;
 
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,7 +21,17 @@ import com.wct.animall.security.service.CategoryService;
 @RequestMapping("/api/v1/")
 public class CategroyControllerAPI {
 
-	/********************** REST API ********************/
+	ConcurrentMap<Long, Category> categories = new ConcurrentHashMap<>();
+
+	/********************* ADD A categroy ****************/
+	// POST
+	@PostMapping(value = "/category/add")
+	public Category addCategory(@RequestBody Category category) {
+		categories.put(category.getId(), category);
+		return category;
+	}
+
+	/****************** ADD A categroy ********/
 
 	@Autowired
 	private CategoryService categoryService;
@@ -31,7 +44,7 @@ public class CategroyControllerAPI {
 	}
 
 	// get a Category by id
-	@RequestMapping(value = "/Category/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "/Category/{id}", method = RequestMethod.GET)
 	public Category getSingleCategory(@PathVariable int id) {
 		return categoryService.getSignleCategory(id);
 	}

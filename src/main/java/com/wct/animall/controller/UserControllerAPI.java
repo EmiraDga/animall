@@ -5,6 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,15 +39,16 @@ public class UserControllerAPI {
 		return userService.getSignleUser(id);
 	}
 
-	/********************* ????? ****************/
+	/********************* ADD : POST ****************/
 	// POST
+	@PreAuthorize("permitAll()")
 	@PostMapping(value = "/users/add")
 	public User addUser(@RequestBody User user) {
 		users.put(user.getId(), user);
 		return user;
 	}
 
-	/****************** ????? *********************/
+	/****************** ADD : POST *********************/
 
 	// POST
 	@RequestMapping(value = "/users/save", method = RequestMethod.POST)
