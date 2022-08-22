@@ -1,8 +1,6 @@
 package com.wct.animall.controller;
 
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wct.animall.dto.UserDto;
 import com.wct.animall.model.User;
+import com.wct.animall.repository.UserRepository;
 import com.wct.animall.security.service.UserService;
 
 //@CrossOrigin("*")
@@ -22,16 +22,10 @@ public class UserControllerAPI {
 	@Autowired
 	private UserService userService;
 
-	ConcurrentMap<Long, User> users = new ConcurrentHashMap<>();
+	@Autowired
+	private UserRepository userRepo;
 
-	// GET
-	// get all users
-	/*
-	 * @RequestMapping(value = "/users", method = RequestMethod.GET) public
-	 * List<User> getUsers() { System.out.println("get all the users"); return
-	 * userService.getAllUsers(); }
-	 */
-
+	/** b1 */
 	// GET
 	// get all users
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
@@ -39,14 +33,22 @@ public class UserControllerAPI {
 		return userService.getAllTheUsers();
 	}
 
+	/** b1 */
 	// get a user By ID
 	@RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
 	public User getUserById(@PathVariable Long id) {
-		return userService.getSignleUser(id);
+		return userService.getOnlySingleUser(id);
 	}
+
+	/** b1 */
 
 	/********************* ADD : POST ****************/
 	// POST
+	/*
+	 * public UserDto addUser(@RequestBody UserDto user) {
+	 * System.out.println("add the user"); userService.saveUser(user); return user;
+	 * }
+	 */
 	@PostMapping(value = "/users/add")
 	public UserDto addUser(@RequestBody UserDto user) {
 		System.out.println("add the user");
@@ -56,23 +58,17 @@ public class UserControllerAPI {
 
 	/****************** ADD : POST *********************/
 
-	// POST
-//	@RequestMapping(value = "/users/save", method = RequestMethod.POST)
-//	public void SaveUser(@RequestBody User user) {
-//		System.out.println("save the user");
-//		userService.saveUser(user);
-//	}
-
-	// PUT
-	@RequestMapping(value = "/users/update", method = RequestMethod.PUT)
-	public void updateUser(@RequestBody User user) {
-		System.out.println("update the user");
-		userService.updateUser(user);
-	}
-
 	// DELETE
-	@RequestMapping(value = "/users/delete", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/users/delete/{id}", method = RequestMethod.DELETE)
 	public void deleteUser(Long id) {
 		userService.RemoveUser(id);
 	}
+
+	// UPDATE | PUT
+	@PostMapping("/update/{id}")
+	public Long saveUser(@RequestBody User user) {
+		userService.saveTheUser(user);
+		return user.getId();
+	}
+
 }

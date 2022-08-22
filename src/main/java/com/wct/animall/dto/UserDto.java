@@ -1,7 +1,7 @@
-package com.wct.animall.controller;
+package com.wct.animall.dto;
 
 public class UserDto {
-	private long id;
+	private Long id;
 	private String firstname;
 
 	public UserDto(long id, String firstname) {
@@ -10,11 +10,11 @@ public class UserDto {
 		this.firstname = firstname;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
