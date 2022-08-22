@@ -45,7 +45,7 @@ public class User {
 
 	@NotBlank
 	@Size(max = 20)
-	private Authority authority;
+	private String authority;
 
 	@NotBlank
 	@Size(max = 120)
@@ -95,7 +95,7 @@ public class User {
 
 	public User(String username, String email, String password, String mobile, String phone, String lastname,
 			String firstname, boolean isAccountNonExpired, boolean isAccountNonLocked, boolean active,
-			boolean isEnabled, Authority authority) {
+			boolean isEnabled, String authority) {
 		this.username = username;
 		this.email = email;
 		this.password = password;
@@ -117,11 +117,11 @@ public class User {
 		this.annoucements = annoucements;
 	}
 
-	public Authority getAuthority() {
+	public String getAuthority() {
 		return authority;
 	}
 
-	public void setAuthority(Authority authority) {
+	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
 

@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: com.springboot.app.SpringbootFirstAppApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.678 s <<< FAILURE! - in com.springboot.app.SpringbootFirstAppApplicationTests
+com.springboot.app.SpringbootFirstAppApplicationTests  Time elapsed: 0.675 s  <<< ERROR!
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to read candidate component class: file [/home/edga/Documents/Dev/Java/SpringBoot/Try/animall/target/test-classes/com/springboot/app/SpringbootFirstAppApplicationTests.class]; nested exception is org.springframework.core.NestedIOException: ASM ClassReader failed to parse class file - probably due to a new Java class file version that isn't supported yet: file [/home/edga/Documents/Dev/Java/SpringBoot/Try/animall/target/test-classes/com/springboot/app/SpringbootFirstAppApplicationTests.class]; nested exception is java.lang.IllegalArgumentException: Unsupported class file major version 61
+Caused by: org.springframework.core.NestedIOException: ASM ClassReader failed to parse class file - probably due to a new Java class file version that isn't supported yet: file [/home/edga/Documents/Dev/Java/SpringBoot/Try/animall/target/test-classes/com/springboot/app/SpringbootFirstAppApplicationTests.class]; nested exception is java.lang.IllegalArgumentException: Unsupported class file major version 61
+Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 61
+

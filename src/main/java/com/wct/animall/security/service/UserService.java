@@ -7,11 +7,15 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wct.animall.controller.UserDto;
 import com.wct.animall.model.User;
 import com.wct.animall.repository.UserRepository;
 
 @Service
 public class UserService {
+
+	@Autowired
+	UserRepository userRepository;
 
 	private List<User> users = new ArrayList<>();
 
@@ -24,14 +28,6 @@ public class UserService {
 		return users.stream().filter(u -> u.getId().equals(id)).findFirst().get();
 
 	}
-
-	/********* ????? *****/
-	/// POST
-	/*
-	 * public void AddUser() { users.add(new User("Samosd", "samosd@gmil.com",
-	 * "1918495", "258889336", "55714825", "gogo", "brain", true, true, false,
-	 * true)); }
-	 */
 
 	// Return all users
 	public List<User> getAllUsers() {
@@ -48,8 +44,9 @@ public class UserService {
 	}
 
 	// Save the user with its new changes
-	public void saveUser(User user) {
-		this.users.add(user);
+	public void saveUser(UserDto user) {
+		System.out.println(user);
+		// userRepository.save(user);
 	}
 
 	// update the user's Username (lastN + FirstN)
