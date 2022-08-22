@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wct.animall.dto.UserDto;
 import com.wct.animall.model.User;
 import com.wct.animall.repository.UserRepository;
 
@@ -56,11 +55,15 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepo;
+	/*
+	 * // Save the user with its new changes public UserDto saveUser(UserDto
+	 * userdto) { System.out.println(userdto); return userRepository.save(userdto);
+	 * }
+	 */
 
-	// Save the user with its new changes
-	public UserDto saveUser(UserDto userdto) {
-		System.out.println(userdto);
-		return userRepository.save(userdto);
+	public User saveUser(User user) {
+		System.out.println(user);
+		return userRepository.save(user);
 	}
 
 // Return all users

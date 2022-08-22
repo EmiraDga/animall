@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wct.animall.dto.UserDto;
 import com.wct.animall.model.User;
 import com.wct.animall.repository.UserRepository;
 import com.wct.animall.security.service.UserService;
@@ -49,8 +48,13 @@ public class UserControllerAPI {
 	 * System.out.println("add the user"); userService.saveUser(user); return user;
 	 * }
 	 */
+	/*
+	 * @PostMapping(value = "/users/add") public UserDto addUser(@RequestBody
+	 * UserDto user) { System.out.println("add the user");
+	 * userService.saveUser(user); return user; }
+	 */
 	@PostMapping(value = "/users/add")
-	public UserDto addUser(@RequestBody UserDto user) {
+	public User addUser(@RequestBody User user) {
 		System.out.println("add the user");
 		userService.saveUser(user);
 		return user;
