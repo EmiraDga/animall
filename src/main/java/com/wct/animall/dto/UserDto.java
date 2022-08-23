@@ -1,9 +1,5 @@
 package com.wct.animall.dto;
 
-import java.util.List;
-
-import com.wct.animall.model.Announcement;
-
 public class UserDto {
 	private Long id;
 
@@ -13,15 +9,11 @@ public class UserDto {
 
 	private String firstname;
 
-	private String mobile;
-
 	private String phone;
 
 	private String password;
 
 	private String username;
-
-	private List<Announcement> annoucements;
 
 	public String getEmail() {
 		return email;
@@ -37,14 +29,6 @@ public class UserDto {
 
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
-	}
-
-	public String getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
 	}
 
 	public String getPhone() {
@@ -69,14 +53,6 @@ public class UserDto {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public List<Announcement> getAnnoucements() {
-		return annoucements;
-	}
-
-	public void setAnnoucements(List<Announcement> annoucements) {
-		this.annoucements = annoucements;
 	}
 
 	public Long getId() {
