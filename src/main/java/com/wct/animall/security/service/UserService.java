@@ -73,7 +73,7 @@ public class UserService {
 	}
 
 // Return Single User
-	public User getOnlySingleUser(Long id) {
+	public User findById(Long id) {
 		return userRepo.findById(id).get();
 
 	}

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,15 +38,16 @@ public class UserControllerAPI {
 
 	@GetMapping("/users/{id}")
 	public UserDto findByID(@PathVariable Long id) {
-		User usr = userService.getOnlySingleUser(id);
+		User usr = userService.findById(id);
 		return converter.convertToDto(usr);
 	}
 
 	@PostMapping("/users/add")
 	public UserDto saveUserDto(UserDto dto) {
-		User user = converter.convertToEntity(dto);
-		user = userService.saveUser(user);
-		return converter.convertToDto(user);
+//		User user = converter.convertToEntity(dto);
+//		user = userService.saveUser(user);
+//		return converter.convertToDto(user);
+		return null;
 	}
 
 	@RequestMapping(value = "/users/delete/{id}", method = RequestMethod.DELETE)
@@ -53,24 +55,34 @@ public class UserControllerAPI {
 		userService.RemoveUser(id);
 	}
 
-	@RequestMapping(value = "/users/update/{id}", method = RequestMethod.PUT)
-	public UserDto updateUserDto(Long id, UserDto dto) {
-		User Saveduser = userService.getOnlySingleUser(id);
-		User userToUpdate = converter.convertToEntity(dto);
+	@PutMapping("/users/update/{id}")
+	public UserDto updateUserDto(@PathVariable("id") Long id,
+			@org.springframework.web.bind.annotation.RequestBody UserDto dto) {
+		User Saveduser = userService.findById(id);
+		User userToUpdate = converter.convertToEntity(dto, Saveduser);
 
-		Saveduser.setFirstname(userToUpdate.getFirstname());
-		;
-		Saveduser.setLastname(userToUpdate.getLastname());
-		;
-		Saveduser.setEmail(userToUpdate.getEmail());
-		;
-		Saveduser.setPhone(userToUpdate.getPhone());
-		;
-		Saveduser.setUsername(userToUpdate.getUsername());
-		;
-
-		return converter.convertToDto(userService.saveUser(Saveduser));
+		return converter.convertToDto(userService.saveUser(userToUpdate));
 	}
+
+//	@RequestMapping(value = "/users/update/{id}", method = RequestMethod.PUT)
+//	public void updateUser(Long id, User user) {
+//
+//		User userFromDb = userService.getOnlySingleUser(id);
+//		userFromDb.setUsername(user.getUsername());
+//		userFromDb.setPhone(user.getPhone());
+//		userFromDb.setEmail(user.getEmail());
+//		userFromDb.setMobile(user.getMobile());
+//		userFromDb.setFirstname(user.getFirstname());
+//		userFromDb.setLastname(user.getLastname());
+//		userFromDb.setPassword(user.getPassword());
+//		userFromDb.setAccountNonExpired(user.isAccountNonExpired());
+//		userFromDb.setAccountNonLocked(user.isAccountNonLocked());
+//		userFromDb.setActive(user.isActive());
+//		userFromDb.setAuthority(user.getAuthority());
+//		userFromDb.setEnabled(user.isEnabled());
+//
+//		userService.saveUser(userFromDb);
+//	}
 
 	/*
 	 * @RequestMapping(value = "/users", method = RequestMethod.GET) public
@@ -103,4 +115,5 @@ public class UserControllerAPI {
 	 * @PostMapping("/update/{id}") public Long saveUser(@RequestBody User user) {
 	 * userService.saveTheUser(user); return user.getId(); }
 	 */
+
 }

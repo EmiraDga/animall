@@ -15,6 +15,22 @@ public class UserDto {
 
 	private String username;
 
+	public UserDto() {
+		super();
+	}
+
+	public UserDto(Long id, String email, String lastname, String firstname, String phone, String password,
+			String username) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.lastname = lastname;
+		this.firstname = firstname;
+		this.phone = phone;
+		this.password = password;
+		this.username = username;
+	}
+
 	public String getEmail() {
 		return email;
 	}
