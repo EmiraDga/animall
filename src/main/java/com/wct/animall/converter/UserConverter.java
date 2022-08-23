@@ -1,37 +1,31 @@
 package com.wct.animall.converter;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
+
 import com.wct.animall.dto.UserDto;
 import com.wct.animall.model.User;
 
+@Component
 public class UserConverter {
 
-	public UserDto entityToDto(User user) {
+	private ModelMapper modelMapper;
 
-		UserDto dto = new UserDto();
-		dto.setId(user.getId());
-		dto.setEmail(user.getEmail());
-		dto.setFirstname(user.getFirstname());
-		dto.setLastname(user.getLastname());
-		dto.setPassword(user.getPassword());
-		dto.setPhone(user.getPhone());
-		dto.setUsername(user.getUsername());
-
+	public UserDto convertToDto(User user) {
+		UserDto dto = modelMapper.map(user, UserDto.class);
 		return dto;
 	}
 
-	public User DtoToEntity(UserDto dto) {
+	public User convertToEntity(UserDto dto) {
+		User user = modelMapper.map(dto, User.class);
+		return user;
+	}
 
-		User usr = new User();
-
-		usr.setId(dto.getId());
-		usr.setEmail(dto.getEmail());
-		usr.setFirstname(dto.getFirstname());
-		usr.setLastname(dto.getLastname());
-		usr.setPassword(dto.getPassword());
-		usr.setPhone(dto.getPhone());
-		usr.setUsername(dto.getUsername());
-
-		return usr;
+	public List<UserDto> entityToDto(List<User> user) {
+		return user.stream().map(x -> convertToDto(x)).collect(Collectors.toList());
 	}
 
 }

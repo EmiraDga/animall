@@ -1,8 +1,10 @@
 package com.wct.animall;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = {
@@ -14,6 +16,12 @@ public class SpringbootFirstAppApplication {
 		SpringApplication.run(SpringbootFirstAppApplication.class, args);
 
 	}
+
+	@Bean
+	public ModelMapper modelMapper() {
+		return new ModelMapper();
+	}
+
 	/*
 	 * @Autowired private UserRepository userRepository;
 	 * 
