@@ -20,28 +20,18 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepo;
 
+	// Get all the users
 	public List<UserDto> findAll() {
 		List<UserDto> userDtoList = new ArrayList<>();
 		userRepo.findAll().forEach(user -> userDtoList.add(converter.convertToDto(user)));
 		return userDtoList;
 	}
 
-	// Return Single User
+	// Get one user
 	public User findById(Long id) {
 		return userRepo.findById(id).get();
 	}
 
-	public User saveUser(User user) {
-		System.out.println(user);
-		return userRepo.save(user);
-	}
-
-// Save the user with its new changes
-	public void saveTheUser(User user) {
-		userRepo.save(user);
-	}
-
-//Remove
 	public void RemoveUser(Long id) {
 		userRepo.deleteById(id);
 	}

@@ -1,15 +1,15 @@
 package com.wct.animall.dto;
 
-public class AnnouncemetDto {
+public class AnnouncementDto {
 
 	private Long id;
 
 	private String state;
 
-	public AnnouncemetDto() {
+	public AnnouncementDto() {
 	}
 
-	public AnnouncemetDto(Long id, String state) {
+	public AnnouncementDto(Long id, String state) {
 		super();
 		this.id = id;
 		this.state = state;
