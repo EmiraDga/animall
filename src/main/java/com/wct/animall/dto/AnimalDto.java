@@ -1,7 +1,5 @@
 package com.wct.animall.dto;
 
-import java.io.File;
-
 public class AnimalDto {
 
 	private Integer id;
@@ -10,14 +8,14 @@ public class AnimalDto {
 	private String color;
 	private String gender;
 	private String Breed;
-	private File image;
+	private String image;
 	private boolean vaccinated;
 	private boolean trained;
 
 	public AnimalDto() {
 	}
 
-	public AnimalDto(int id, String name, int age, String color, String gender, String breed, File image,
+	public AnimalDto(int id, String name, int age, String color, String gender, String breed, String image,
 			boolean vaccinated, boolean trained) {
 		super();
 		this.id = id;
@@ -79,11 +77,11 @@ public class AnimalDto {
 		Breed = breed;
 	}
 
-	public File getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(File image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 

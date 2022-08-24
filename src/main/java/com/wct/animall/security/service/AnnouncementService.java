@@ -3,13 +3,17 @@ package com.wct.animall.security.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wct.animall.converter.AnnouncementConverter;
 import com.wct.animall.dto.AnnouncementDto;
+import com.wct.animall.dto.AnnouncementSaveDto;
 import com.wct.animall.model.Announcement;
+import com.wct.animall.model.User;
 import com.wct.animall.repository.AnnouncementRepository;
+import com.wct.animall.repository.UserRepository;
 
 @Service
 public class AnnouncementService {
@@ -19,6 +23,12 @@ public class AnnouncementService {
 
 	@Autowired
 	private AnnouncementRepository announcRepository;
+
+	@Autowired
+	private ModelMapper modelMapper;
+
+	@Autowired
+	private UserRepository userRepository;
 
 	// Get all the users
 	public List<AnnouncementDto> findAll() {
@@ -36,8 +46,10 @@ public class AnnouncementService {
 		announcRepository.deleteById(id);
 	}
 
-	public AnnouncementDto saveAnnouncementDto(AnnouncementDto dto) {
-		Announcement announcement = converter.convertToEntity(dto);
+	public AnnouncementDto saveAnnouncementDto(AnnouncementSaveDto dto) throws Exception {
+		Announcement announcement = modelMapper.map(dto, Announcement.class);
+		User user = userRepository.findById(dto.getUserId()).orElseThrow(() -> new Exception("User Not found"));
+		announcement.setUser(user);
 		return converter.convertToDto(announcRepository.save(announcement));
 	}
 
@@ -45,7 +57,7 @@ public class AnnouncementService {
 		Announcement SavedAnnouncement = announcRepository.findById(id).get();
 		Announcement AnnouncementToUpdate = converter.convertToEntity(dto);
 		SavedAnnouncement.setState(AnnouncementToUpdate.getState());
-
+		SavedAnnouncement.setUser(AnnouncementToUpdate.getUser());
 		return converter.convertToDto(announcRepository.save(SavedAnnouncement));
 	}
 	/*

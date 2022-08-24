@@ -1,7 +1,5 @@
 package com.wct.animall.model;
 
-import java.io.File;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,7 +23,7 @@ public class Animal {
 	private Announcement announce;
 
 	private String color, gender, Breed, name;
-	private File image;
+	private String image;
 	private int age;
 
 	private float weight, length, width;
@@ -42,7 +40,7 @@ public class Animal {
 
 	}
 
-	public Animal(String color, String gender, File image, String breed, String name, int age, float weight,
+	public Animal(String color, String gender, String image, String breed, String name, int age, float weight,
 			float length, float width, boolean vaccinated, boolean trained, Category category) {
 		this.color = color;
 		this.gender = gender;
@@ -59,7 +57,7 @@ public class Animal {
 
 	}
 
-	public Animal(String color, String gender, File image, String breed, String name, int age, float weight,
+	public Animal(String color, String gender, String image, String breed, String name, int age, float weight,
 			float length, float width, boolean vaccinated, boolean trained) {
 		this.color = color;
 		this.gender = gender;
@@ -99,11 +97,11 @@ public class Animal {
 		this.gender = gender;
 	}
 
-	public File getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(File image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 

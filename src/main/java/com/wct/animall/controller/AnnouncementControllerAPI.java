@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.wct.animall.converter.AnnouncementConverter;
 import com.wct.animall.dto.AnnouncementDto;
+import com.wct.animall.dto.AnnouncementSaveDto;
 import com.wct.animall.model.Announcement;
 import com.wct.animall.security.service.AnnouncementService;
 
@@ -40,7 +41,7 @@ public class AnnouncementControllerAPI {
 	}
 
 	@PostMapping("/Announcement/add")
-	public AnnouncementDto saveAnnouncementDto(AnnouncementDto dto) {
+	public AnnouncementDto saveAnnouncementDto(AnnouncementSaveDto dto) throws Exception {
 		return announcementService.saveAnnouncementDto(dto);
 	}
 

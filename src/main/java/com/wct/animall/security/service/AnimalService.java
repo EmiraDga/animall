@@ -1,7 +1,7 @@
 package com.wct.animall.security.service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,9 +61,8 @@ public class AnimalService {
 	 */
 
 	public List<AnimalDto> findAll() {
-		List<AnimalDto> animalDtoLit = new ArrayList<>();
-		animalRepository.findAll().forEach(animal -> animalDtoLit.add(converter.convertToDto(animal)));
-		return animalDtoLit;
+		var r = animalRepository.findAll();
+		return r.stream().map(animal -> converter.convertToDto(animal)).collect(Collectors.toList());
 	}
 
 	// Return Single User

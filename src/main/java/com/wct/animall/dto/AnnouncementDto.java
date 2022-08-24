@@ -6,13 +6,24 @@ public class AnnouncementDto {
 
 	private String state;
 
+	private UserDto userDto;
+
 	public AnnouncementDto() {
 	}
 
-	public AnnouncementDto(Long id, String state) {
+	public AnnouncementDto(Long id, String state, UserDto userDto) {
 		super();
 		this.id = id;
 		this.state = state;
+		this.userDto = userDto;
+	}
+
+	public UserDto getUser() {
+		return userDto;
+	}
+
+	public void setUser(UserDto user) {
+		this.userDto = user;
 	}
 
 	public Long getId() {
