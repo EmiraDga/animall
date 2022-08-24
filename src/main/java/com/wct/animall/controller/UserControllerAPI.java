@@ -31,9 +31,8 @@ public class UserControllerAPI {
 	private UserRepository userRepo;
 
 	@GetMapping("/users")
-	public List<UserDto> findAll() {
-		List<User> findAll = userService.getAllTheUsers();
-		return converter.entityToDto(findAll);
+	public List<UserDto> GetAll() {
+		return userService.findAll();
 	}
 
 	@GetMapping("/users/{id}")
@@ -44,10 +43,7 @@ public class UserControllerAPI {
 
 	@PostMapping("/users/add")
 	public UserDto saveUserDto(UserDto dto) {
-//		User user = converter.convertToEntity(dto);
-//		user = userService.saveUser(user);
-//		return converter.convertToDto(user);
-		return null;
+		return userService.saveUserDto(dto);
 	}
 
 	@RequestMapping(value = "/users/delete/{id}", method = RequestMethod.DELETE)
@@ -56,64 +52,9 @@ public class UserControllerAPI {
 	}
 
 	@PutMapping("/users/update/{id}")
-	public UserDto updateUserDto(@PathVariable("id") Long id,
+	public UserDto updateUser(@PathVariable("id") Long id,
 			@org.springframework.web.bind.annotation.RequestBody UserDto dto) {
-		User Saveduser = userService.findById(id);
-		User userToUpdate = converter.convertToEntity(dto, Saveduser);
-
-		return converter.convertToDto(userService.saveUser(userToUpdate));
+		return userService.updateUserDto(id, dto);
 	}
-
-//	@RequestMapping(value = "/users/update/{id}", method = RequestMethod.PUT)
-//	public void updateUser(Long id, User user) {
-//
-//		User userFromDb = userService.getOnlySingleUser(id);
-//		userFromDb.setUsername(user.getUsername());
-//		userFromDb.setPhone(user.getPhone());
-//		userFromDb.setEmail(user.getEmail());
-//		userFromDb.setMobile(user.getMobile());
-//		userFromDb.setFirstname(user.getFirstname());
-//		userFromDb.setLastname(user.getLastname());
-//		userFromDb.setPassword(user.getPassword());
-//		userFromDb.setAccountNonExpired(user.isAccountNonExpired());
-//		userFromDb.setAccountNonLocked(user.isAccountNonLocked());
-//		userFromDb.setActive(user.isActive());
-//		userFromDb.setAuthority(user.getAuthority());
-//		userFromDb.setEnabled(user.isEnabled());
-//
-//		userService.saveUser(userFromDb);
-//	}
-
-	/*
-	 * @RequestMapping(value = "/users", method = RequestMethod.GET) public
-	 * List<User> getUsers() { return userService.getAllTheUsers(); }
-	 * 
-	 * @RequestMapping(value = "/users/{id}", method = RequestMethod.GET) public
-	 * User getUserById(@PathVariable Long id) { return
-	 * userService.getOnlySingleUser(id); }
-	 */
-	// POST
-	/*
-	 * public UserDto addUser(@RequestBody UserDto user) {
-	 * System.out.println("add the user"); userService.saveUser(user); return user;
-	 * }
-	 * 
-	 * 
-	 * @PostMapping(value = "/users/add") public UserDto addUser(@RequestBody
-	 * UserDto user) { System.out.println("add the user");
-	 * userService.saveUser(user); return user; }
-	 */
-	/*
-	 * @PostMapping(value = "/users/add") public User addUser(@RequestBody User
-	 * user) { System.out.println("add the user"); userService.saveUser(user);
-	 * return user; }
-	 */
-	/*
-	 * @RequestMapping(value = "/users/delete/{id}", method = RequestMethod.DELETE)
-	 * public void deleteUser(Long id) { userService.RemoveUser(id); }
-	 * 
-	 * @PostMapping("/update/{id}") public Long saveUser(@RequestBody User user) {
-	 * userService.saveTheUser(user); return user.getId(); }
-	 */
 
 }

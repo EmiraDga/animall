@@ -19,14 +19,6 @@ public class UserConverter {
 	public UserDto convertToDto(User user) {
 
 		UserDto dto = modelMapper.map(user, UserDto.class);
-
-		/*
-		 * dto.setId(user.getId()); dto.setEmail(user.getEmail());
-		 * dto.setFirstname(user.getFirstname()); dto.setLastname(user.getLastname());
-		 * dto.setPassword(user.getPassword()); dto.setPhone(user.getPhone());
-		 * dto.setUsername(user.getUsername());
-		 */
-
 		return dto;
 	}
 
@@ -34,9 +26,13 @@ public class UserConverter {
 		return user.stream().map(x -> convertToDto(x)).collect(Collectors.toList());
 	}
 
-	public User convertToEntity(UserDto dto, User user) {
+	/*
+	 * public User convertToEntity(UserDto dto, User user) { modelMapper.map(dto,
+	 * user); return user; }
+	 */
 
-		modelMapper.map(dto, user);
+	public User convertToEntity(UserDto dto) {
+		User user = modelMapper.map(dto, User.class);
 		return user;
 	}
 

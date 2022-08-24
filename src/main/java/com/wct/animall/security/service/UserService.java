@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wct.animall.converter.UserConverter;
+import com.wct.animall.dto.UserDto;
 import com.wct.animall.model.User;
 import com.wct.animall.repository.UserRepository;
 
@@ -15,67 +17,28 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 
+	@Autowired
+	UserConverter converter;
+
 	private List<User> users = new ArrayList<>();
-
-	/*
-	 * // POST public void addUser(User user) { users.add(user); }
-	 */
-
-	// GET
-	/*
-	 * public User getUser(Long id) { return users.stream().filter(u ->
-	 * u.getId().equals(id)).findFirst().get();
-	 * 
-	 * }
-	 * 
-	 * // Return all users public List<User> getAllUsers() { return users; }
-	 * 
-	 * // Return Single User public User getSignleUser(Long id) { for (User u :
-	 * users) { if (u.getId() == id) return u; } return null; }
-	 * 
-	 * // Save the user with its new changes public void saveUser(UserDto user) {
-	 * System.out.println(user); // userRepository.save(user); }
-	 * 
-	 * // update the user's Username (lastN + FirstN) public void updateUser(User
-	 * user) {
-	 * 
-	 * for (User u : users) { if (u.getId() == user.getId()) {
-	 * u.setUsername(user.getUsername()); u.setFirstname(user.getFirstname());
-	 * u.setLastname(user.getLastname());
-	 * 
-	 * } }
-	 * 
-	 * }
-	 * 
-	 * // Remove a user public void deleteUser(Long id) { users.remove(id); }
-	 */
-	/*******
-	 * Using JpaRepository methods
-	 **************************/
 
 	@Autowired
 	private UserRepository userRepo;
-	/*
-	 * // Save the user with its new changes public UserDto saveUser(UserDto
-	 * userdto) { System.out.println(userdto); return userRepository.save(userdto);
-	 * }
-	 */
+
+	public List<UserDto> findAll() {
+		List<UserDto> userDtoList = new ArrayList<>();
+		userRepo.findAll().forEach(user -> userDtoList.add(converter.convertToDto(user)));
+		return userDtoList;
+	}
+
+	// Return Single User
+	public User findById(Long id) {
+		return userRepo.findById(id).get();
+	}
 
 	public User saveUser(User user) {
 		System.out.println(user);
 		return userRepository.save(user);
-	}
-
-// Return all users
-	public List<User> getAllTheUsers() {
-		userRepo.findAll().forEach(users::add);
-		return users;
-	}
-
-// Return Single User
-	public User findById(Long id) {
-		return userRepo.findById(id).get();
-
 	}
 
 // Save the user with its new changes
@@ -83,22 +46,36 @@ public class UserService {
 		userRepo.save(user);
 	}
 
-	// ???? error
-// update the user's Username (lastN + FirstN)
-	/*
-	 * public User updateTheUser(User u , Long id) {
-	 * 
-	 * User user = // crush the variables of the /*user.setFirstname("john");
-	 * user1.setLastname("dew"); user.setAge(16); user1.save(userFromDb);
-	 */
-
-	// userRepo.save(u);
-
-	// } //
-
 //Remove
 	public void RemoveUser(Long id) {
 		userRepo.deleteById(id);
 	}
+
+	public UserDto saveUserDto(UserDto dto) {
+		User user = converter.convertToEntity(dto);
+		return converter.convertToDto(userRepo.save(user));
+
+	}
+
+	public UserDto updateUserDto(Long id, UserDto dto) {
+		User Saveduser = userRepo.findById(id).get();
+		User userToUpdate = converter.convertToEntity(dto);
+
+		Saveduser.setUsername(userToUpdate.getUsername());
+		Saveduser.setFirstname(userToUpdate.getFirstname());
+		Saveduser.setLastname(userToUpdate.getLastname());
+		Saveduser.setEmail(userToUpdate.getEmail());
+		Saveduser.setPassword(userToUpdate.getPassword());
+		Saveduser.setPhone(userToUpdate.getPhone());
+
+		return converter.convertToDto(userRepo.save(Saveduser));
+	}
+
+	/*
+	 * public UserDto saveUserDto(UserDto dto) { convertToEntity(Object to, Entity
+	 * mapper)
+	 * 
+	 * }
+	 */
 
 }
