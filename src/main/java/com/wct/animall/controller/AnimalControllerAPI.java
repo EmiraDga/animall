@@ -6,13 +6,16 @@ import java.util.concurrent.ConcurrentMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wct.animall.converter.AnimalConverter;
+import com.wct.animall.dto.AnimalDto;
 import com.wct.animall.model.Animal;
 import com.wct.animall.security.service.AnimalService;
 
@@ -22,50 +25,76 @@ import com.wct.animall.security.service.AnimalService;
 public class AnimalControllerAPI {
 
 	@Autowired
+	AnimalConverter converter;
+
+	@Autowired
 	private AnimalService animalService;
 
 	ConcurrentMap<Integer, Animal> animals = new ConcurrentHashMap<>();
 
 	/********************* ADD AN ANIMAL ****************/
-	// POST
-	@PostMapping(value = "/animals/add")
-	public Animal addAnimal(@RequestBody Animal animal) {
-		animals.put(animal.getId(), animal);
-		return animal;
-	}
+//	// POST
+//	/@PostMapping(value = "/animals/add")
+//	public Animal addAnimal(@RequestBody Animal animal) {
+//		animals.put(animal.getId(), animal);
+//		return animal;
+//	}
 
 	/****************** ADD AN ANIMAL ********/
 
 	/***** GET *****/
 	// get all animals
+
 	@RequestMapping(value = "/animals", method = RequestMethod.GET)
-	public List<Animal> getAnimals() {
-		return animalService.getAllAnimals();
+	public List<AnimalDto> GetAll() {
+		return animalService.findAll();
 	}
 
-	// get an animal by id
-	@RequestMapping(value = "/animals/{id}", method = RequestMethod.GET)
-	public Animal getSingleAnimal(@PathVariable int id) {
-		return animalService.getOnlySingleAnimal(id);
+	@GetMapping("/animals/{id}")
+	public AnimalDto findByID(@PathVariable int id) {
+		Animal animal = animalService.findById(id);
+		return converter.convertToDto(animal);
 	}
 
-	/**** POST ****/
-// save
-	@RequestMapping(value = "/animals/save", method = RequestMethod.POST)
-	public void saveAnimal(Animal animal) {
-		animalService.saveAnimal(animal);
+	@PostMapping("/animals/add")
+	public AnimalDto saveUserDto(AnimalDto dto) {
+		return animalService.saveAnimalDto(dto);
 	}
 
-	/**** PUT ****/
-	@RequestMapping(value = "/animals/update", method = RequestMethod.PUT)
-	public void updateAnimal(@RequestBody Animal animal) {
-		animalService.updateAnimal(animal);
-	}
-
-	/**** DELETE ****/
-	@RequestMapping(value = "/animals/delete", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/animals/delete/{id}", method = RequestMethod.DELETE)
 	public void deleteAnimal(int id) {
-		animalService.deleteAnimal(id);
+		animalService.RemoveAnimal(id);
 	}
+
+	@PutMapping("/animals/update/{id}")
+	public AnimalDto updateAnimal(@PathVariable("id") int id,
+			@org.springframework.web.bind.annotation.RequestBody AnimalDto dto) {
+		return animalService.updateAnimalDto(id, dto);
+	}
+
+//	// get an animal by id
+//	@RequestMapping(value = "/animals/{id}", method = RequestMethod.GET)
+//	public Animal getSingleAnimal(@PathVariable int id) {
+//		return animalService.getOnlySingleAnimal(id);
+//	}
+//
+//	/**** POST ****/
+//// save
+//	@RequestMapping(value = "/animals/save", method = RequestMethod.POST)
+//	public void saveAnimal(Animal animal) {
+//		animalService.saveAnimal(animal);
+//	}
+//
+//	/**** PUT ****/
+//	@RequestMapping(value = "/animals/update", method = RequestMethod.PUT)
+//	public void updateAnimal(@RequestBody Animal animal) {
+//		animalService.updateAnimal(animal);
+//	}
+//
+//	/**** DELETE ****/
+//	@RequestMapping(value = "/animals/delete", method = RequestMethod.DELETE)
+//	public void deleteAnimal(int id) {
+//		animalService.deleteAnimal(id);
+//	}
 
 }

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wct.animall.converter.UserConverter;
 import com.wct.animall.dto.UserDto;
 import com.wct.animall.model.User;
-import com.wct.animall.repository.UserRepository;
 import com.wct.animall.security.service.UserService;
 
 //@CrossOrigin("*")
@@ -26,9 +25,6 @@ public class UserControllerAPI {
 
 	@Autowired
 	UserConverter converter;
-
-	@Autowired
-	private UserRepository userRepo;
 
 	@GetMapping("/users")
 	public List<UserDto> GetAll() {

@@ -20,8 +20,6 @@ public class UserService {
 	@Autowired
 	UserConverter converter;
 
-	private List<User> users = new ArrayList<>();
-
 	@Autowired
 	private UserRepository userRepo;
 
@@ -54,7 +52,6 @@ public class UserService {
 	public UserDto saveUserDto(UserDto dto) {
 		User user = converter.convertToEntity(dto);
 		return converter.convertToDto(userRepo.save(user));
-
 	}
 
 	public UserDto updateUserDto(Long id, UserDto dto) {
@@ -70,12 +67,5 @@ public class UserService {
 
 		return converter.convertToDto(userRepo.save(Saveduser));
 	}
-
-	/*
-	 * public UserDto saveUserDto(UserDto dto) { convertToEntity(Object to, Entity
-	 * mapper)
-	 * 
-	 * }
-	 */
 
 }

@@ -17,9 +17,10 @@ public class AnimalDto {
 	public AnimalDto() {
 	}
 
-	public AnimalDto(String name, int age, String color, String gender, String breed, File image, boolean vaccinated,
-			boolean trained) {
+	public AnimalDto(int id, String name, int age, String color, String gender, String breed, File image,
+			boolean vaccinated, boolean trained) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.age = age;
 		this.color = color;

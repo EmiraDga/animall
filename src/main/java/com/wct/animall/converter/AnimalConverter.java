@@ -1,5 +1,8 @@
 package com.wct.animall.converter;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +20,15 @@ public class AnimalConverter {
 
 		AnimalDto Animaldto = modelMapper.map(animal, AnimalDto.class);
 		return Animaldto;
+	}
+
+	public List<AnimalDto> entityToDto(List<Animal> animal) {
+		return animal.stream().map(x -> convertToDto(x)).collect(Collectors.toList());
+	}
+
+	public Animal convertToEntity(AnimalDto Animaldto) {
+		Animal animal = modelMapper.map(Animaldto, Animal.class);
+		return animal;
 	}
 
 }
