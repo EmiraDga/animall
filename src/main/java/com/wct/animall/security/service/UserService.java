@@ -15,9 +15,6 @@ import com.wct.animall.repository.UserRepository;
 public class UserService {
 
 	@Autowired
-	UserRepository userRepository;
-
-	@Autowired
 	UserConverter converter;
 
 	@Autowired
@@ -36,7 +33,7 @@ public class UserService {
 
 	public User saveUser(User user) {
 		System.out.println(user);
-		return userRepository.save(user);
+		return userRepo.save(user);
 	}
 
 // Save the user with its new changes
