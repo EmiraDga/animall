@@ -43,8 +43,9 @@ public class CategoryController {
 
 	// update the category
 	@RequestMapping(value = "/categories/save")
-	public void updateTheUser(Category c) {
+	public Category addCategory(@RequestBody Category c) {
 		categoryRepository.save(c);
+		return c;
 
 	}
 
