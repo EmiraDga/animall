@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.wct.animall.converter.AnimalConverter;
 import com.wct.animall.dto.AnimalDto;
+import com.wct.animall.dto.AnimalSaveDto;
 import com.wct.animall.model.Animal;
 import com.wct.animall.security.service.AnimalService;
 
@@ -57,7 +58,7 @@ public class AnimalControllerAPI {
 	}
 
 	@PostMapping("/animals/add")
-	public AnimalDto saveUserDto(AnimalDto dto) {
+	public AnimalSaveDto saveUserDto(AnimalSaveDto dto) {
 		return animalService.saveAnimalDto(dto);
 	}
 

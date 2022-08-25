@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.wct.animall.dto.UserDto;
 import com.wct.animall.dto.UserSaveDto;
+import com.wct.animall.dto.UserUpdateDto;
 import com.wct.animall.model.User;
 
 @Service
@@ -51,6 +52,18 @@ public class UserConverter {
 	public UserSaveDto convertToSaveDto(User user) {
 
 		UserSaveDto dto = modelMapper.map(user, UserSaveDto.class);
+		return dto;
+	}
+
+	// UpdateDto
+	public User convertToUpdateEntity(UserUpdateDto dto) {
+		User user = modelMapper.map(dto, User.class);
+		return user;
+	}
+
+	public UserUpdateDto convertToUpdateDto(User user) {
+
+		UserUpdateDto dto = modelMapper.map(user, UserUpdateDto.class);
 		return dto;
 	}
 

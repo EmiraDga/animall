@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wct.animall.dto.AnimalDto;
+import com.wct.animall.dto.AnimalSaveDto;
 import com.wct.animall.model.Animal;
 
 @Service
@@ -31,4 +32,16 @@ public class AnimalConverter {
 		return animal;
 	}
 
+	// SaveAnimal
+
+	public AnimalSaveDto convertToSaveDto(Animal animal) {
+
+		AnimalSaveDto Animaldto = modelMapper.map(animal, AnimalSaveDto.class);
+		return Animaldto;
+	}
+
+	public Animal convertToSaveEntity(AnimalSaveDto Animaldto) {
+		Animal animal = modelMapper.map(Animaldto, Animal.class);
+		return animal;
+	}
 }

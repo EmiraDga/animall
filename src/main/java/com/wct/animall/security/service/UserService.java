@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.wct.animall.converter.UserConverter;
 import com.wct.animall.dto.UserDto;
 import com.wct.animall.dto.UserSaveDto;
+import com.wct.animall.dto.UserUpdateDto;
 import com.wct.animall.model.User;
 import com.wct.animall.repository.UserRepository;
 
@@ -42,9 +43,9 @@ public class UserService {
 		return converter.convertToSaveDto(userRepo.save(user));
 	}
 
-	public UserDto updateUserDto(Long id, UserDto dto) {
+	public UserUpdateDto updateUserDto(Long id, UserUpdateDto dto) {
 		User Saveduser = userRepo.findById(id).get();
-		User userToUpdate = converter.convertToEntity(dto);
+		User userToUpdate = converter.convertToUpdateEntity(dto);
 
 		Saveduser.setUsername(userToUpdate.getUsername());
 		Saveduser.setFirstname(userToUpdate.getFirstname());
@@ -53,7 +54,7 @@ public class UserService {
 		Saveduser.setPassword(userToUpdate.getPassword());
 		Saveduser.setPhone(userToUpdate.getPhone());
 
-		return converter.convertToDto(userRepo.save(Saveduser));
+		return converter.convertToUpdateDto(userRepo.save(Saveduser));
 	}
 
 }

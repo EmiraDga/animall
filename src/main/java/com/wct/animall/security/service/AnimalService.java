@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.wct.animall.converter.AnimalConverter;
 import com.wct.animall.dto.AnimalDto;
+import com.wct.animall.dto.AnimalSaveDto;
 import com.wct.animall.model.Animal;
 import com.wct.animall.repository.AnimalRepository;
 
@@ -75,9 +76,9 @@ public class AnimalService {
 		animalRepository.deleteById(id);
 	}
 
-	public AnimalDto saveAnimalDto(AnimalDto dto) {
-		Animal animal = converter.convertToEntity(dto);
-		return converter.convertToDto(animalRepository.save(animal));
+	public AnimalSaveDto saveAnimalDto(AnimalSaveDto dto) {
+		Animal animal = converter.convertToSaveEntity(dto);
+		return converter.convertToSaveDto(animalRepository.save(animal));
 	}
 
 	public AnimalDto updateAnimalDto(int id, AnimalDto dto) {
