@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wct.animall.dto.CategoryDto;
+import com.wct.animall.dto.CategorySaveDto;
 import com.wct.animall.model.Category;
 
 @Service
@@ -28,6 +29,19 @@ public class CategoryConverter {
 	public Category convertToEntity(CategoryDto dto) {
 		Category category = modelMapper.map(dto, Category.class);
 		return category;
+	}
+
+	// Save
+
+	public Category convertToEntitySave(CategorySaveDto dto) {
+		Category category = modelMapper.map(dto, Category.class);
+		return category;
+	}
+
+	public CategorySaveDto convertToDtoSave(Category category) {
+
+		CategorySaveDto dto = modelMapper.map(category, CategorySaveDto.class);
+		return dto;
 	}
 
 }

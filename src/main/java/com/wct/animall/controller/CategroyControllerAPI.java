@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.wct.animall.converter.CategoryConverter;
 import com.wct.animall.dto.CategoryDto;
+import com.wct.animall.dto.CategorySaveDto;
 import com.wct.animall.model.Category;
 import com.wct.animall.repository.CategoryRepository;
 import com.wct.animall.security.service.CategoryService;
@@ -44,7 +45,7 @@ public class CategroyControllerAPI {
 	}
 
 	@PostMapping("/category/add")
-	public CategoryDto saveCategoryDto(CategoryDto dto) {
+	public CategorySaveDto saveCategoryDto(CategorySaveDto dto) {
 		return categService.saveCategoryDto(dto);
 	}
 

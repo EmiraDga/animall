@@ -31,8 +31,16 @@ public class AnnouncementConverter {
 		return announcement;
 	}
 
+	// UpdateDto
 	public Announcement convertToEntityUpdate(AnnouncementUpdateDto dto) {
 		Announcement announcement = modelMapper.map(dto, Announcement.class);
 		return announcement;
 	}
+
+	public AnnouncementDto convertToDtoUpdate(Announcement announcement) {
+
+		AnnouncementDto dto = modelMapper.map(announcement, AnnouncementDto.class);
+		return dto;
+	}
+
 }

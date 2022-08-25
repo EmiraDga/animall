@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.wct.animall.converter.UserConverter;
 import com.wct.animall.dto.UserDto;
+import com.wct.animall.dto.UserSaveDto;
 import com.wct.animall.model.User;
 import com.wct.animall.security.service.UserService;
 
@@ -38,7 +39,7 @@ public class UserControllerAPI {
 	}
 
 	@PostMapping("/users/add")
-	public UserDto saveUserDto(UserDto dto) {
+	public UserSaveDto saveUserDto(UserSaveDto dto) {
 		return userService.saveUserDto(dto);
 	}
 

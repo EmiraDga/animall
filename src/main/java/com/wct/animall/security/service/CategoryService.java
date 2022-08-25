@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.wct.animall.converter.CategoryConverter;
 import com.wct.animall.dto.CategoryDto;
+import com.wct.animall.dto.CategorySaveDto;
 import com.wct.animall.model.Category;
 import com.wct.animall.repository.CategoryRepository;
 
@@ -38,9 +39,9 @@ public class CategoryService {
 		CatRepo.deleteById(id);
 	}
 
-	public CategoryDto saveCategoryDto(CategoryDto dto) {
-		Category category = converter.convertToEntity(dto);
-		return converter.convertToDto(CatRepo.save(category));
+	public CategorySaveDto saveCategoryDto(CategorySaveDto dto) {
+		Category category = converter.convertToEntitySave(dto);
+		return converter.convertToDtoSave(CatRepo.save(category));
 	}
 
 	public CategoryDto updateCategoryDto(Long id, CategoryDto dto) {

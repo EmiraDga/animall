@@ -59,6 +59,9 @@ public class AnnouncementService {
 		Announcement SavedAnnouncement = announcRepository.findById(id).get();
 		Announcement AnnouncementToUpdate = converter.convertToEntityUpdate(dto);
 		SavedAnnouncement.setState(AnnouncementToUpdate.getState());
+		SavedAnnouncement.setCreatedDate(AnnouncementToUpdate.getCreatedDate());
+		SavedAnnouncement.setLocation(AnnouncementToUpdate.getLocation());
+		SavedAnnouncement.setDescription(AnnouncementToUpdate.getDescription());
 		SavedAnnouncement.setUser(AnnouncementToUpdate.getUser());
 		return converter.convertToDto(announcRepository.save(SavedAnnouncement));
 	}

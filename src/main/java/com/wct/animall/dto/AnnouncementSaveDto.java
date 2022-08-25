@@ -2,9 +2,11 @@ package com.wct.animall.dto;
 
 import java.util.Date;
 
+import com.wct.animall.model.StateType;
+
 public class AnnouncementSaveDto {
 
-	private String state;
+	private StateType state;
 
 	private Long userId;
 
@@ -18,7 +20,7 @@ public class AnnouncementSaveDto {
 		super();
 	}
 
-	public AnnouncementSaveDto(String state, Long userId, String location, Date createdDate, String description) {
+	public AnnouncementSaveDto(StateType state, Long userId, String location, Date createdDate, String description) {
 		super();
 		this.state = state;
 		this.userId = userId;
@@ -51,11 +53,11 @@ public class AnnouncementSaveDto {
 		this.description = description;
 	}
 
-	public String getState() {
+	public StateType getState() {
 		return state;
 	}
 
-	public void setState(String state) {
+	public void setState(StateType state) {
 		this.state = state;
 	}
 

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wct.animall.dto.UserDto;
+import com.wct.animall.dto.UserSaveDto;
 import com.wct.animall.model.User;
 
 @Service
@@ -27,6 +28,11 @@ public class UserConverter {
 	}
 
 	/*
+	 * public List<UserDto> entityToDto(List<User> user) { return
+	 * user.stream().map(x -> convertToDto(x)).collect(Collectors.toList()); }
+	 */
+
+	/*
 	 * public User convertToEntity(UserDto dto, User user) { modelMapper.map(dto,
 	 * user); return user; }
 	 */
@@ -34,6 +40,18 @@ public class UserConverter {
 	public User convertToEntity(UserDto dto) {
 		User user = modelMapper.map(dto, User.class);
 		return user;
+	}
+
+	// SaveDTO
+	public User convertToSaveEntity(UserSaveDto dto) {
+		User user = modelMapper.map(dto, User.class);
+		return user;
+	}
+
+	public UserSaveDto convertToSaveDto(User user) {
+
+		UserSaveDto dto = modelMapper.map(user, UserSaveDto.class);
+		return dto;
 	}
 
 }
