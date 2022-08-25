@@ -19,9 +19,15 @@ public class Announcement {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	String state;
+	StateType state;
+
+	int nb_announncment;
+
+	String location;
 
 	Date createdDate;
+
+	String description;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "User_id", referencedColumnName = "id")
@@ -30,25 +36,48 @@ public class Announcement {
 	public Announcement() {
 	}
 
+	public Announcement(Long id, StateType state, int nb_announncment, String location, Date createdDate,
+			String description, User user) {
+		super();
+		this.id = id;
+		this.state = state;
+		this.nb_announncment = nb_announncment;
+		this.location = location;
+		this.createdDate = createdDate;
+		this.description = description;
+		this.user = user;
+	}
+
+	public StateType getState() {
+		return state;
+	}
+
+	public void setState(StateType state) {
+		this.state = state;
+	}
+
+	public int getNb_announncment() {
+		return nb_announncment;
+	}
+
+	public void setNb_announncment(int nb_announncment) {
+		this.nb_announncment = nb_announncment;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Announcement(String state, Date createdDate) {
-		this.state = state;
-		this.createdDate = createdDate;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
 	}
 
 	public Date getCreatedDate() {
@@ -65,6 +94,14 @@ public class Announcement {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }
