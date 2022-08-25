@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wct.animall.dto.AnnouncementDto;
+import com.wct.animall.dto.AnnouncementUpdateDto;
 import com.wct.animall.model.Announcement;
 
 @Service
@@ -26,6 +27,11 @@ public class AnnouncementConverter {
 	}
 
 	public Announcement convertToEntity(AnnouncementDto dto) {
+		Announcement announcement = modelMapper.map(dto, Announcement.class);
+		return announcement;
+	}
+
+	public Announcement convertToEntityUpdate(AnnouncementUpdateDto dto) {
 		Announcement announcement = modelMapper.map(dto, Announcement.class);
 		return announcement;
 	}

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.wct.animall.converter.AnnouncementConverter;
 import com.wct.animall.dto.AnnouncementDto;
 import com.wct.animall.dto.AnnouncementSaveDto;
+import com.wct.animall.dto.AnnouncementUpdateDto;
 import com.wct.animall.model.Announcement;
 import com.wct.animall.model.User;
 import com.wct.animall.repository.AnnouncementRepository;
@@ -53,13 +54,15 @@ public class AnnouncementService {
 		return converter.convertToDto(announcRepository.save(announcement));
 	}
 
-	public AnnouncementDto updateAnnouncementDto(Long id, AnnouncementDto dto) {
+	public AnnouncementDto updateAnnouncementDto(Long id, AnnouncementUpdateDto dto) {
+
 		Announcement SavedAnnouncement = announcRepository.findById(id).get();
-		Announcement AnnouncementToUpdate = converter.convertToEntity(dto);
+		Announcement AnnouncementToUpdate = converter.convertToEntityUpdate(dto);
 		SavedAnnouncement.setState(AnnouncementToUpdate.getState());
 		SavedAnnouncement.setUser(AnnouncementToUpdate.getUser());
 		return converter.convertToDto(announcRepository.save(SavedAnnouncement));
 	}
+
 	/*
 	 * private List<Announcement> announcements = new ArrayList<>();
 	 * 

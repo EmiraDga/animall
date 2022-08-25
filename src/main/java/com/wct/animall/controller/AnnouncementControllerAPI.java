@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wct.animall.converter.AnnouncementConverter;
 import com.wct.animall.dto.AnnouncementDto;
 import com.wct.animall.dto.AnnouncementSaveDto;
+import com.wct.animall.dto.AnnouncementUpdateDto;
 import com.wct.animall.model.Announcement;
 import com.wct.animall.security.service.AnnouncementService;
 
@@ -52,7 +53,7 @@ public class AnnouncementControllerAPI {
 
 	@PutMapping("/Announcement/update/{id}")
 	public AnnouncementDto updateAnnouncement(@PathVariable("id") Long id,
-			@org.springframework.web.bind.annotation.RequestBody AnnouncementDto dto) {
+			@org.springframework.web.bind.annotation.RequestBody AnnouncementUpdateDto dto) {
 		return announcementService.updateAnnouncementDto(id, dto);
 	}
 
