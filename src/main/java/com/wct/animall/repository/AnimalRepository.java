@@ -4,8 +4,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.wct.animall.model.Animal;
+import com.wct.animall.model.Category;
 
 @Repository
 public interface AnimalRepository extends JpaRepository<Animal, Integer> {
+
+	Category save(Category category);
 
 }

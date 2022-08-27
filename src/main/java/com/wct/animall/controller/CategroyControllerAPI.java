@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wct.animall.converter.CategoryConverter;
 import com.wct.animall.dto.CategoryDto;
 import com.wct.animall.dto.CategorySaveDto;
+import com.wct.animall.dto.CategoryUpdateDto;
 import com.wct.animall.model.Category;
 import com.wct.animall.repository.CategoryRepository;
 import com.wct.animall.security.service.CategoryService;
@@ -44,8 +45,9 @@ public class CategroyControllerAPI {
 		return converter.convertToDto(category);
 	}
 
+	// ????? why not categorySaveDto
 	@PostMapping("/category/add")
-	public CategorySaveDto saveCategoryDto(CategorySaveDto dto) {
+	public CategoryDto saveCategoryDto(CategorySaveDto dto) throws Exception {
 		return categService.saveCategoryDto(dto);
 	}
 
@@ -55,8 +57,8 @@ public class CategroyControllerAPI {
 	}
 
 	@PutMapping("/category/update/{id}")
-	public CategoryDto updatCategory(@PathVariable("id") Long id,
-			@org.springframework.web.bind.annotation.RequestBody CategoryDto dto) {
+	public CategoryUpdateDto updatCategory(@PathVariable("id") Long id,
+			@org.springframework.web.bind.annotation.RequestBody CategoryUpdateDto dto) {
 		return categService.updateCategoryDto(id, dto);
 	}
 

@@ -47,11 +47,11 @@ public class AnnouncementService {
 		announcRepository.deleteById(id);
 	}
 
-	public AnnouncementDto saveAnnouncementDto(AnnouncementSaveDto dto) throws Exception {
+	public AnnouncementSaveDto saveAnnouncementDto(AnnouncementSaveDto dto) throws Exception {
 		Announcement announcement = modelMapper.map(dto, Announcement.class);
 		User user = userRepository.findById(dto.getUserId()).orElseThrow(() -> new Exception("User Not found"));
 		announcement.setUser(user);
-		return converter.convertToDto(announcRepository.save(announcement));
+		return converter.convertToSaveDto(announcRepository.save(announcement));
 	}
 
 	public AnnouncementDto updateAnnouncementDto(Long id, AnnouncementUpdateDto dto) {
@@ -59,7 +59,7 @@ public class AnnouncementService {
 		Announcement SavedAnnouncement = announcRepository.findById(id).get();
 		Announcement AnnouncementToUpdate = converter.convertToEntityUpdate(dto);
 		SavedAnnouncement.setState(AnnouncementToUpdate.getState());
-		SavedAnnouncement.setCreatedDate(AnnouncementToUpdate.getCreatedDate());
+		SavedAnnouncement.setDateCreated(AnnouncementToUpdate.getDateCreated());
 		SavedAnnouncement.setLocation(AnnouncementToUpdate.getLocation());
 		SavedAnnouncement.setDescription(AnnouncementToUpdate.getDescription());
 		SavedAnnouncement.setUser(AnnouncementToUpdate.getUser());

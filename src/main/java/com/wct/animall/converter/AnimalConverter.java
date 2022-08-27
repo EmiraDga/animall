@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.wct.animall.dto.AnimalDto;
 import com.wct.animall.dto.AnimalSaveDto;
+import com.wct.animall.dto.AnimalUpdateDto;
 import com.wct.animall.model.Animal;
 
 @Service
@@ -44,4 +45,18 @@ public class AnimalConverter {
 		Animal animal = modelMapper.map(Animaldto, Animal.class);
 		return animal;
 	}
+
+	// update
+
+	public AnimalUpdateDto convertToUpdateDto(Animal animal) {
+
+		AnimalUpdateDto Animaldto = modelMapper.map(animal, AnimalUpdateDto.class);
+		return Animaldto;
+	}
+
+	public Animal convertToUpdateEntity(AnimalUpdateDto Animaldto) {
+		Animal animal = modelMapper.map(Animaldto, Animal.class);
+		return animal;
+	}
+
 }

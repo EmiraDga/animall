@@ -1,7 +1,5 @@
 package com.wct.animall.model;
 
-import java.util.Date;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +9,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+
 @Entity
 @Table(name = "announcement")
 public class Announcement {
@@ -19,15 +20,16 @@ public class Announcement {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	StateType state;
+	private StateType state;
 
-	int nb_announncment;
+	private int nb_announncment;
 
-	String location;
+	private String location;
 
-	Date createdDate;
+	@JsonFormat(pattern = "yyyy-MM-dd", shape = Shape.STRING)
+	private String dateCreated;
 
-	String description;
+	private String description;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "User_id", referencedColumnName = "id")
@@ -36,14 +38,14 @@ public class Announcement {
 	public Announcement() {
 	}
 
-	public Announcement(Long id, StateType state, int nb_announncment, String location, Date createdDate,
+	public Announcement(Long id, StateType state, int nb_announncment, String location, String dateCreated,
 			String description, User user) {
 		super();
 		this.id = id;
 		this.state = state;
 		this.nb_announncment = nb_announncment;
 		this.location = location;
-		this.createdDate = createdDate;
+		this.dateCreated = dateCreated;
 		this.description = description;
 		this.user = user;
 	}
@@ -80,12 +82,12 @@ public class Announcement {
 		this.id = id;
 	}
 
-	public Date getCreatedDate() {
-		return createdDate;
+	public String getDateCreated() {
+		return dateCreated;
 	}
 
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
+	public void setDateCreated(String dateCreated) {
+		this.dateCreated = dateCreated;
 	}
 
 	public User getUser() {

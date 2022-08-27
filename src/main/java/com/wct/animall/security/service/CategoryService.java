@@ -3,25 +3,35 @@ package com.wct.animall.security.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wct.animall.converter.CategoryConverter;
 import com.wct.animall.dto.CategoryDto;
 import com.wct.animall.dto.CategorySaveDto;
+import com.wct.animall.dto.CategoryUpdateDto;
+import com.wct.animall.model.Animal;
 import com.wct.animall.model.Category;
+import com.wct.animall.repository.AnimalRepository;
 import com.wct.animall.repository.CategoryRepository;
 
 @Service
 public class CategoryService {
 
-	private List<Category> categories = new ArrayList<>();
+	// private List<Category> categories = new ArrayList<>();
 
 	@Autowired
 	CategoryConverter converter;
 
 	@Autowired
 	private CategoryRepository CatRepo;
+
+	@Autowired
+	private ModelMapper modelMapper;
+
+	@Autowired
+	private AnimalRepository animalRepo;
 
 	// GET ALL
 	public List<CategoryDto> findAll() {
@@ -39,18 +49,26 @@ public class CategoryService {
 		CatRepo.deleteById(id);
 	}
 
-	public CategorySaveDto saveCategoryDto(CategorySaveDto dto) {
-		Category category = converter.convertToEntitySave(dto);
-		return converter.convertToDtoSave(CatRepo.save(category));
+//	public AnnouncementDto saveAnnouncementDto(AnnouncementSaveDto dto) throws Exception {
+//		Announcement announcement = modelMapper.map(dto, Announcement.class);
+//		User user = userRepository.findById(dto.getUserId()).orElseThrow(() -> new Exception("User Not found"));
+//		announcement.setUser(user);
+//		return converter.convertToDto(announcRepository.save(announcement));
+//	}
+
+	public CategoryDto saveCategoryDto(CategorySaveDto dto) throws Exception {
+		Category category = modelMapper.map(dto, Category.class);
+		List<Animal> animal = animalRepo.findAllById(dto.getAnimalId());
+		category.setAnimals(animal);
+		return converter.convertToDto(animalRepo.save(category));
+
 	}
 
-	public CategoryDto updateCategoryDto(Long id, CategoryDto dto) {
+	public CategoryUpdateDto updateCategoryDto(Long id, CategoryUpdateDto dto) {
 		Category SavedCategory = CatRepo.findById(id).get();
-		Category CategoryToUpdate = converter.convertToEntity(dto);
-
+		Category CategoryToUpdate = converter.convertToEntityUpdate(dto);
 		SavedCategory.setName(CategoryToUpdate.getName());
-
-		return converter.convertToDto(CatRepo.save(SavedCategory));
+		return converter.convertToDtoUpdate(CatRepo.save(SavedCategory));
 	}
 
 //	// POST

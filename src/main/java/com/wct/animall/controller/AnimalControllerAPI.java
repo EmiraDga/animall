@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wct.animall.converter.AnimalConverter;
 import com.wct.animall.dto.AnimalDto;
 import com.wct.animall.dto.AnimalSaveDto;
+import com.wct.animall.dto.AnimalUpdateDto;
 import com.wct.animall.model.Animal;
 import com.wct.animall.security.service.AnimalService;
 
@@ -58,7 +59,7 @@ public class AnimalControllerAPI {
 	}
 
 	@PostMapping("/animals/add")
-	public AnimalSaveDto saveUserDto(AnimalSaveDto dto) {
+	public AnimalSaveDto saveUserDto(AnimalSaveDto dto) throws Exception {
 		return animalService.saveAnimalDto(dto);
 	}
 
@@ -68,8 +69,8 @@ public class AnimalControllerAPI {
 	}
 
 	@PutMapping("/animals/update/{id}")
-	public AnimalDto updateAnimal(@PathVariable("id") int id,
-			@org.springframework.web.bind.annotation.RequestBody AnimalDto dto) {
+	public AnimalUpdateDto updateAnimal(@PathVariable("id") int id,
+			@org.springframework.web.bind.annotation.RequestBody AnimalUpdateDto dto) {
 		return animalService.updateAnimalDto(id, dto);
 	}
 

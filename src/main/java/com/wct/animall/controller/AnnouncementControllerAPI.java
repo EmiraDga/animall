@@ -42,7 +42,7 @@ public class AnnouncementControllerAPI {
 	}
 
 	@PostMapping("/Announcement/add")
-	public AnnouncementDto saveAnnouncementDto(AnnouncementSaveDto dto) throws Exception {
+	public AnnouncementSaveDto saveAnnouncementDto(AnnouncementSaveDto dto) throws Exception {
 		return announcementService.saveAnnouncementDto(dto);
 	}
 

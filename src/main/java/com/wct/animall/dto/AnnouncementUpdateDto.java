@@ -1,7 +1,7 @@
 package com.wct.animall.dto;
 
-import java.util.Date;
-
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import com.wct.animall.model.StateType;
 
 public class AnnouncementUpdateDto {
@@ -10,22 +10,24 @@ public class AnnouncementUpdateDto {
 
 	private Long userId;
 
-	String location;
+	private String location;
 
-	Date createdDate;
+	@JsonFormat(pattern = "yyyy-MM-dd", shape = Shape.STRING)
+	private String dateCreated;
 
-	String description;
+	private String description;
 
 	public AnnouncementUpdateDto() {
 		super();
 	}
 
-	public AnnouncementUpdateDto(StateType state, Long userId, String location, Date createdDate, String description) {
+	public AnnouncementUpdateDto(StateType state, Long userId, String location, String dateCreated,
+			String description) {
 		super();
 		this.state = state;
 		this.userId = userId;
 		this.location = location;
-		this.createdDate = createdDate;
+		this.dateCreated = dateCreated;
 		this.description = description;
 	}
 
@@ -37,16 +39,16 @@ public class AnnouncementUpdateDto {
 		this.location = location;
 	}
 
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-
 	public String getDescription() {
 		return description;
+	}
+
+	public String getDateCreated() {
+		return dateCreated;
+	}
+
+	public void setDateCreated(String dateCreated) {
+		this.dateCreated = dateCreated;
 	}
 
 	public void setDescription(String description) {

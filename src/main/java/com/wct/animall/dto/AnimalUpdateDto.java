@@ -1,8 +1,7 @@
 package com.wct.animall.dto;
 
-public class AnimalDto {
+public class AnimalUpdateDto {
 
-	private Integer id;
 	private String name;
 	private int age;
 	private String color;
@@ -11,16 +10,13 @@ public class AnimalDto {
 	private String image;
 	private boolean vaccinated;
 	private boolean trained;
-	private CategoryDto CategoryDto;
 
-	public AnimalDto() {
+	public AnimalUpdateDto() {
 	}
 
-	public AnimalDto(int id, String name, int age, String color, String gender, String breed, String image,
-			boolean vaccinated, boolean trained, CategoryDto CategoryDto) {
+	public AnimalUpdateDto(String name, int age, String color, String gender, String breed, String image,
+			boolean vaccinated, boolean trained) {
 		super();
-		this.CategoryDto = CategoryDto;
-		this.id = id;
 		this.name = name;
 		this.age = age;
 		this.color = color;
@@ -29,22 +25,6 @@ public class AnimalDto {
 		this.image = image;
 		this.vaccinated = vaccinated;
 		this.trained = trained;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public CategoryDto getCategoryDto() {
-		return CategoryDto;
-	}
-
-	public void setCategoryDto(CategoryDto categoryDto) {
-		CategoryDto = categoryDto;
 	}
 
 	public String getName() {

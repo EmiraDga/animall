@@ -10,13 +10,15 @@ public class AnimalSaveDto {
 	private String image;
 	private boolean vaccinated;
 	private boolean trained;
+	private Long categoryId;
 
 	public AnimalSaveDto() {
 	}
 
 	public AnimalSaveDto(String name, int age, String color, String gender, String breed, String image,
-			boolean vaccinated, boolean trained) {
+			boolean vaccinated, boolean trained, Long categoryId) {
 		super();
+		this.categoryId = categoryId;
 		this.name = name;
 		this.age = age;
 		this.color = color;
@@ -25,6 +27,14 @@ public class AnimalSaveDto {
 		this.image = image;
 		this.vaccinated = vaccinated;
 		this.trained = trained;
+	}
+
+	public Long getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(Long categoryId) {
+		this.categoryId = categoryId;
 	}
 
 	public String getName() {

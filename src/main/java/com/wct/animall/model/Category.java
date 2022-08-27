@@ -26,10 +26,11 @@ public class Category {
 	@OneToMany(mappedBy = "category")
 	private List<Animal> animals;
 
-	public Category(@NotBlank @Size(max = 20) String name, Animal animals) {
+	public Category(Long id, String name) {
+
 		super();
+		this.id = id;
 		this.name = name;
-		this.animals = this.animals;
 	}
 
 	public Category() {
@@ -47,11 +48,11 @@ public class Category {
 		this.name = name;
 	}
 
-	public List<Animal> getAnimal() {
+	public List<Animal> getAnimals() {
 		return animals;
 	}
 
-	public void setAnimal(List<Animal> animals) {
+	public void setAnimals(List<Animal> animals) {
 		this.animals = animals;
 	}
 

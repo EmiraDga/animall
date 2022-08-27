@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.wct.animall.dto.CategoryDto;
 import com.wct.animall.dto.CategorySaveDto;
+import com.wct.animall.dto.CategoryUpdateDto;
 import com.wct.animall.model.Category;
 
 @Service
@@ -41,6 +42,19 @@ public class CategoryConverter {
 	public CategorySaveDto convertToDtoSave(Category category) {
 
 		CategorySaveDto dto = modelMapper.map(category, CategorySaveDto.class);
+		return dto;
+	}
+
+	// update
+
+	public Category convertToEntityUpdate(CategoryUpdateDto dto) {
+		Category category = modelMapper.map(dto, Category.class);
+		return category;
+	}
+
+	public CategoryUpdateDto convertToDtoUpdate(Category category) {
+
+		CategoryUpdateDto dto = modelMapper.map(category, CategoryUpdateDto.class);
 		return dto;
 	}
 

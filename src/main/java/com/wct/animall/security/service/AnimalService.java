@@ -3,14 +3,18 @@ package com.wct.animall.security.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wct.animall.converter.AnimalConverter;
 import com.wct.animall.dto.AnimalDto;
 import com.wct.animall.dto.AnimalSaveDto;
+import com.wct.animall.dto.AnimalUpdateDto;
 import com.wct.animall.model.Animal;
+import com.wct.animall.model.Category;
 import com.wct.animall.repository.AnimalRepository;
+import com.wct.animall.repository.CategoryRepository;
 
 @Service
 public class AnimalService {
@@ -20,6 +24,12 @@ public class AnimalService {
 
 	@Autowired
 	AnimalConverter converter;
+
+	@Autowired
+	private ModelMapper modelMapper;
+
+	@Autowired
+	private CategoryRepository categoryRepo;
 
 	/*
 	 * private List<Animal> animals = new ArrayList<>();
@@ -76,14 +86,24 @@ public class AnimalService {
 		animalRepository.deleteById(id);
 	}
 
-	public AnimalSaveDto saveAnimalDto(AnimalSaveDto dto) {
-		Animal animal = converter.convertToSaveEntity(dto);
+//	public AnnouncementDto saveAnnouncementDto(AnnouncementSaveDto dto) throws Exception {
+//		Announcement announcement = modelMapper.map(dto, Announcement.class);
+//		User user = userRepository.findById(dto.getUserId()).orElseThrow(() -> new Exception("User Not found"));
+//		announcement.setUser(user);
+//		return converter.convertToDto(announcRepository.save(announcement));
+//	}
+
+	public AnimalSaveDto saveAnimalDto(AnimalSaveDto dto) throws Exception {
+		Animal animal = modelMapper.map(dto, Animal.class);
+		Category category = categoryRepo.findById(dto.getCategoryId())
+				.orElseThrow(() -> new Exception("category Not found"));
+		animal.setCategory(category);
 		return converter.convertToSaveDto(animalRepository.save(animal));
 	}
 
-	public AnimalDto updateAnimalDto(int id, AnimalDto dto) {
+	public AnimalUpdateDto updateAnimalDto(int id, AnimalUpdateDto dto) {
 		Animal SavedAnimal = animalRepository.findById(id).get();
-		Animal animalToUpdate = converter.convertToEntity(dto);
+		Animal animalToUpdate = converter.convertToUpdateEntity(dto);
 
 		SavedAnimal.setAge(animalToUpdate.getAge());
 		SavedAnimal.setName(animalToUpdate.getName());
@@ -93,8 +113,9 @@ public class AnimalService {
 		SavedAnimal.setGender(animalToUpdate.getGender());
 		SavedAnimal.setVaccinated(animalToUpdate.isVaccinated());
 		SavedAnimal.setTrained(animalToUpdate.isTrained());
+		SavedAnimal.setCategory(animalToUpdate.getCategory());
 
-		return converter.convertToDto(animalRepository.save(SavedAnimal));
+		return converter.convertToUpdateDto(animalRepository.save(SavedAnimal));
 	}
 
 	// Return all animals
