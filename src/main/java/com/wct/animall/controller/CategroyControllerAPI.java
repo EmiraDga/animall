@@ -18,7 +18,7 @@ import com.wct.animall.dto.CategorySaveDto;
 import com.wct.animall.dto.CategoryUpdateDto;
 import com.wct.animall.model.Category;
 import com.wct.animall.repository.CategoryRepository;
-import com.wct.animall.security.service.CategoryService;
+import com.wct.animall.service.CategoryService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -47,7 +47,7 @@ public class CategroyControllerAPI {
 
 	// ????? why not categorySaveDto
 	@PostMapping("/category/add")
-	public CategoryDto saveCategoryDto(CategorySaveDto dto) throws Exception {
+	public CategorySaveDto saveCategoryDto(CategorySaveDto dto) throws Exception {
 		return categService.saveCategoryDto(dto);
 	}
 

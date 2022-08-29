@@ -14,9 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wct.animall.converter.UserConverter;
 import com.wct.animall.dto.UserDto;
 import com.wct.animall.dto.UserSaveDto;
-import com.wct.animall.dto.UserUpdateDto;
 import com.wct.animall.model.User;
-import com.wct.animall.security.service.UserService;
+import com.wct.animall.service.UserService;
 
 //@CrossOrigin("*")
 @RestController
@@ -50,8 +49,8 @@ public class UserControllerAPI {
 	}
 
 	@PutMapping("/users/update/{id}")
-	public UserUpdateDto updateUser(@PathVariable("id") Long id,
-			@org.springframework.web.bind.annotation.RequestBody UserUpdateDto dto) {
+	public UserSaveDto updateUser(@PathVariable("id") Long id,
+			@org.springframework.web.bind.annotation.RequestBody UserSaveDto dto) {
 		return userService.updateUserDto(id, dto);
 	}
 

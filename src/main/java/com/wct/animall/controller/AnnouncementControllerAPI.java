@@ -17,7 +17,7 @@ import com.wct.animall.dto.AnnouncementDto;
 import com.wct.animall.dto.AnnouncementSaveDto;
 import com.wct.animall.dto.AnnouncementUpdateDto;
 import com.wct.animall.model.Announcement;
-import com.wct.animall.security.service.AnnouncementService;
+import com.wct.animall.service.AnnouncementService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController

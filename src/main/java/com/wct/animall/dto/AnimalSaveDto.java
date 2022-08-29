@@ -27,6 +27,7 @@ public class AnimalSaveDto {
 		this.image = image;
 		this.vaccinated = vaccinated;
 		this.trained = trained;
+
 	}
 
 	public Long getCategoryId() {

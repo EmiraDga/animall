@@ -1,43 +1,35 @@
 package com.wct.animall.dto;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class CategorySaveDto {
 
 	private String nameCategory;
-	private int animalId;
+
+	private int AnimalId;
 
 	public String getNameCategory() {
 		return nameCategory;
 	}
 
-	public void setNameCategory(String nameCategory, int animalId) {
+	public CategorySaveDto(String nameCategory, int AnimalId) {
+		super();
 		this.nameCategory = nameCategory;
-		this.animalId = animalId;
+		this.AnimalId = AnimalId;
 	}
 
 	public CategorySaveDto() {
 		super();
 	}
 
-	public CategorySaveDto(String nameCategory) {
-		super();
+	public void setNameCategory(String nameCategory) {
 		this.nameCategory = nameCategory;
 	}
 
-	public Iterable<Integer> getAnimalId() {
-		List<Integer> aniamls = new ArrayList<>();
-
-		return aniamls;
+	public int getAnimalId() {
+		return AnimalId;
 	}
 
 	public void setAnimalId(int animalId) {
-		this.animalId = animalId;
-	}
-
-	public void setNameCategory(String nameCategory) {
-		this.nameCategory = nameCategory;
+		AnimalId = animalId;
 	}
 
 }

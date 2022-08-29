@@ -19,7 +19,7 @@ import com.wct.animall.dto.AnimalDto;
 import com.wct.animall.dto.AnimalSaveDto;
 import com.wct.animall.dto.AnimalUpdateDto;
 import com.wct.animall.model.Animal;
-import com.wct.animall.security.service.AnimalService;
+import com.wct.animall.service.AnimalService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -54,8 +54,7 @@ public class AnimalControllerAPI {
 
 	@GetMapping("/animals/{id}")
 	public AnimalDto findByID(@PathVariable int id) {
-		Animal animal = animalService.findById(id);
-		return converter.convertToDto(animal);
+		return animalService.findById(id);
 	}
 
 	@PostMapping("/animals/add")
@@ -69,7 +68,7 @@ public class AnimalControllerAPI {
 	}
 
 	@PutMapping("/animals/update/{id}")
-	public AnimalUpdateDto updateAnimal(@PathVariable("id") int id,
+	public AnimalDto updateAnimal(@PathVariable("id") int id,
 			@org.springframework.web.bind.annotation.RequestBody AnimalUpdateDto dto) {
 		return animalService.updateAnimalDto(id, dto);
 	}

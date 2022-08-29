@@ -48,9 +48,9 @@ public class AnimalConverter {
 
 	// update
 
-	public AnimalUpdateDto convertToUpdateDto(Animal animal) {
+	public AnimalDto convertToUpdateDto(Animal animal) {
 
-		AnimalUpdateDto Animaldto = modelMapper.map(animal, AnimalUpdateDto.class);
+		AnimalDto Animaldto = modelMapper.map(animal, AnimalDto.class);
 		return Animaldto;
 	}
 

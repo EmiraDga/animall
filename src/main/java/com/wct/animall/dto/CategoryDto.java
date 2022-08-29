@@ -5,24 +5,13 @@ public class CategoryDto {
 	private Long id;
 	private String nameCategory;
 
-	private AnimalDto animalDto;
-
 	public CategoryDto() {
 	}
 
-	public CategoryDto(Long id, String nameCategory, AnimalDto animalDto) {
+	public CategoryDto(Long id, String nameCategory) {
 		super();
 		this.id = id;
 		this.nameCategory = nameCategory;
-		this.animalDto = animalDto;
-	}
-
-	public AnimalDto getAnimalDto() {
-		return animalDto;
-	}
-
-	public void setAnimalDto(AnimalDto animalDto) {
-		this.animalDto = animalDto;
 	}
 
 	public Long getId() {

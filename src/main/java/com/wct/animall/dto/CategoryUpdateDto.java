@@ -2,7 +2,8 @@ package com.wct.animall.dto;
 
 public class CategoryUpdateDto {
 	private String nameCategory;
-	private int animalId;
+
+	private AnimalDto AnimalDto;
 
 	public String getNameCategory() {
 		return nameCategory;
@@ -12,22 +13,22 @@ public class CategoryUpdateDto {
 		this.nameCategory = nameCategory;
 	}
 
-	public int getAnimalId() {
-		return animalId;
-	}
-
-	public void setAnimalId(int animalId) {
-		this.animalId = animalId;
-	}
-
-	public CategoryUpdateDto(String nameCategory, int animalId) {
+	public CategoryUpdateDto(String nameCategory, com.wct.animall.dto.AnimalDto animalDto) {
 		super();
 		this.nameCategory = nameCategory;
-		this.animalId = animalId;
+		AnimalDto = animalDto;
 	}
 
 	public CategoryUpdateDto() {
 		super();
+	}
+
+	public AnimalDto getAnimalDto() {
+		return AnimalDto;
+	}
+
+	public void setAnimalDto(AnimalDto animalDto) {
+		AnimalDto = animalDto;
 	}
 
 }

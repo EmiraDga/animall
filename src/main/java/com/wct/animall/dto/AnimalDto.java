@@ -11,24 +11,42 @@ public class AnimalDto {
 	private String image;
 	private boolean vaccinated;
 	private boolean trained;
-	private CategoryDto CategoryDto;
+	private String categoryName;
+	private Long categoryId;
 
-	public AnimalDto() {
+	public String getCategoryName() {
+		return categoryName;
 	}
 
-	public AnimalDto(int id, String name, int age, String color, String gender, String breed, String image,
-			boolean vaccinated, boolean trained, CategoryDto CategoryDto) {
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+	public Long getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(Long categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public AnimalDto(Integer id, String name, int age, String color, String gender, String breed, String image,
+			boolean vaccinated, boolean trained, String categoryName, Long categoryId) {
 		super();
-		this.CategoryDto = CategoryDto;
 		this.id = id;
 		this.name = name;
 		this.age = age;
 		this.color = color;
 		this.gender = gender;
-		this.Breed = breed;
+		Breed = breed;
 		this.image = image;
 		this.vaccinated = vaccinated;
 		this.trained = trained;
+		this.categoryName = categoryName;
+		this.categoryId = categoryId;
+	}
+
+	public AnimalDto() {
 	}
 
 	public Integer getId() {
@@ -37,14 +55,6 @@ public class AnimalDto {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public CategoryDto getCategoryDto() {
-		return CategoryDto;
-	}
-
-	public void setCategoryDto(CategoryDto categoryDto) {
-		CategoryDto = categoryDto;
 	}
 
 	public String getName() {

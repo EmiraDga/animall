@@ -49,21 +49,26 @@ public class CategoryService {
 		CatRepo.deleteById(id);
 	}
 
-//	public AnnouncementDto saveAnnouncementDto(AnnouncementSaveDto dto) throws Exception {
-//		Announcement announcement = modelMapper.map(dto, Announcement.class);
-//		User user = userRepository.findById(dto.getUserId()).orElseThrow(() -> new Exception("User Not found"));
-//		announcement.setUser(user);
-//		return converter.convertToDto(announcRepository.save(announcement));
-//	}
+	// UN PROBLEME AU NIVEAU ANIMAL ET CATEGORY
+	public CategorySaveDto saveCategoryDto(CategorySaveDto dto) throws Exception {
 
-	public CategoryDto saveCategoryDto(CategorySaveDto dto) throws Exception {
 		Category category = modelMapper.map(dto, Category.class);
-		List<Animal> animal = animalRepo.findAllById(dto.getAnimalId());
-		category.setAnimals(animal);
-		return converter.convertToDto(animalRepo.save(category));
+
+		Animal animal = (Animal) animalRepo.findAllById(dto.getAnimalId());
+		category.setAnimals((List<Animal>) animal);
+
+		return converter.convertToDtoSave(CatRepo.save(category));
 
 	}
 
+//	public CategoryUpdateDto updateCategoryDto(Long id, CategoryUpdateDto dto) {
+//		Category SavedCategory = CatRepo.findById(id).get();
+//		Category CategoryToUpdate = converter.convertToEntityUpdate(dto);
+//		SavedCategory.setName(CategoryToUpdate.getName());
+//		return converter.convertToDtoUpdate(CatRepo.save(SavedCategory));
+//	}
+
+	// UN PROBLEME AU NIVEAU ANIMAL ET CATEGORY
 	public CategoryUpdateDto updateCategoryDto(Long id, CategoryUpdateDto dto) {
 		Category SavedCategory = CatRepo.findById(id).get();
 		Category CategoryToUpdate = converter.convertToEntityUpdate(dto);
