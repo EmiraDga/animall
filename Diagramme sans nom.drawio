@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-07-07T15:09:05.649Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0" etag="IJkC_miZz77G13kU5NIF" version="24.6.4" type="github">
+<mxfile host="app.diagrams.net" modified="2024-07-07T17:04:57.751Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0" etag="FvfZKrXpwSEQvfefRkod" version="24.6.4" type="github">
   <diagram name="Page-1" id="2YBvvXClWsGukQMizWep">
-    <mxGraphModel dx="3183" dy="1258" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2950" dy="1132" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -162,11 +162,6 @@
             <mxPoint x="150" y="1" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="2OPe176X_kG1FQ0KxJXt-195" value="Text" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="2OPe176X_kG1FQ0KxJXt-101">
-          <mxGeometry x="0.0095" y="2" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="2OPe176X_kG1FQ0KxJXt-113" value="" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=-5;exitPerimeter=0;" edge="1" parent="1" source="2OPe176X_kG1FQ0KxJXt-92" target="2OPe176X_kG1FQ0KxJXt-95">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1284.5000000000005" y="495.2" as="sourcePoint" />
@@ -233,15 +228,15 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="2OPe176X_kG1FQ0KxJXt-189" value="&lt;font style=&quot;font-size: 13px;&quot;&gt;14.Build et push l&#39;image docker avec la nouvelle version de release&lt;/font&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="630" y="720" width="400" height="40" as="geometry" />
+          <mxGeometry x="620" y="700" width="400" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="2OPe176X_kG1FQ0KxJXt-190" value="" style="endArrow=block;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;rounded=0;" edge="1" parent="1" target="2OPe176X_kG1FQ0KxJXt-179">
+        <mxCell id="2OPe176X_kG1FQ0KxJXt-190" value="" style="endArrow=block;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;rounded=0;" edge="1" parent="1" source="2OPe176X_kG1FQ0KxJXt-24" target="2OPe176X_kG1FQ0KxJXt-179">
           <mxGeometry x="-1" relative="1" as="geometry">
             <mxPoint x="930" y="760" as="sourcePoint" />
             <mxPoint x="720.0018181818181" y="750" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="790" y="760" />
-              <mxPoint x="790" y="760" />
+              <mxPoint x="870" y="730" />
+              <mxPoint x="870" y="730" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -254,7 +249,36 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="2OPe176X_kG1FQ0KxJXt-193" value="&lt;font style=&quot;font-size: 13px;&quot;&gt;15.Exécuter le pipeline de déploiement du service frontend&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="2OPe176X_kG1FQ0KxJXt-192">
+        <mxCell id="2OPe176X_kG1FQ0KxJXt-193" value="&lt;font style=&quot;font-size: 13px;&quot;&gt;16.Exécuter le pipeline de déploiement du service frontend&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="2OPe176X_kG1FQ0KxJXt-192">
+          <mxGeometry x="0.5901" y="-1" relative="1" as="geometry">
+            <mxPoint x="128" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2OPe176X_kG1FQ0KxJXt-215" value="" style="endArrow=block;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;rounded=0;" edge="1" parent="1" target="2OPe176X_kG1FQ0KxJXt-179">
+          <mxGeometry x="-0.174" y="100" relative="1" as="geometry">
+            <mxPoint x="530" y="770" as="sourcePoint" />
+            <mxPoint x="690" y="770" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="590" y="771" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2OPe176X_kG1FQ0KxJXt-217" value="&lt;font style=&quot;font-size: 13px;&quot;&gt;15.Pull l&#39;imge docker&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="2OPe176X_kG1FQ0KxJXt-215">
+          <mxGeometry x="-0.1787" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2OPe176X_kG1FQ0KxJXt-218" value="" style="endArrow=block;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;rounded=0;" edge="1" parent="1">
+          <mxGeometry x="-1" relative="1" as="geometry">
+            <mxPoint x="925" y="840" as="sourcePoint" />
+            <mxPoint x="130" y="840" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="750" y="841" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2OPe176X_kG1FQ0KxJXt-219" value="&lt;font style=&quot;font-size: 13px;&quot;&gt;17.Notifier que le déploiement est terminé &lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="2OPe176X_kG1FQ0KxJXt-218">
           <mxGeometry x="0.5901" y="-1" relative="1" as="geometry">
             <mxPoint x="128" as="offset" />
           </mxGeometry>
